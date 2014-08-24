@@ -46,7 +46,7 @@ under the License.
           <tbody>
                           <tr>
                 <td>
-                  <a href="http://gehel.github.com/jpreseed//checkstyle.html#ch.ledcom.jpreseed.package-info.java">ch/ledcom/jpreseed/package-info.java</a>
+                  <a href="http://gehel.github.com/jpreseed//checkstyle.html#ch.ledcom.jpreseed.JPreseed.java">ch/ledcom/jpreseed/JPreseed.java</a>
                 </td>
                 <td>
                   0
@@ -60,7 +60,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://gehel.github.com/jpreseed//checkstyle.html#ch.ledcom.jpreseed.JPreseed.java">ch/ledcom/jpreseed/JPreseed.java</a>
+                  <a href="http://gehel.github.com/jpreseed//checkstyle.html#ch.ledcom.jpreseed.package-info.java">ch/ledcom/jpreseed/package-info.java</a>
                 </td>
                 <td>
                   0
@@ -102,7 +102,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://gehel.github.com/jpreseed//checkstyle.html#ch.ledcom.jpreseed.DownloadReporter.java">ch/ledcom/jpreseed/DownloadReporter.java</a>
+                  <a href="http://gehel.github.com/jpreseed//checkstyle.html#ch.ledcom.jpreseed.CachedDownloader.java">ch/ledcom/jpreseed/CachedDownloader.java</a>
                 </td>
                 <td>
                   0
@@ -116,7 +116,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://gehel.github.com/jpreseed//checkstyle.html#ch.ledcom.jpreseed.CachedDownloader.java">ch/ledcom/jpreseed/CachedDownloader.java</a>
+                  <a href="http://gehel.github.com/jpreseed//checkstyle.html#ch.ledcom.jpreseed.DownloadReporter.java">ch/ledcom/jpreseed/DownloadReporter.java</a>
                 </td>
                 <td>
                   0
