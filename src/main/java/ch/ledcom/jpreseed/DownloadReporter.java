@@ -16,9 +16,16 @@
 package ch.ledcom.jpreseed;
 
 import com.github.axet.wget.WGet;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 class DownloadReporter implements Runnable {
+
+    private final Logger logger = LoggerFactory.getLogger(getClass());
+
     private final WGet wget;
+
+    private long lastPercent = 0;
 
     public DownloadReporter(WGet wget) {
         this.wget = wget;
@@ -26,6 +33,10 @@ class DownloadReporter implements Runnable {
 
     @Override
     public void run() {
-        System.out.println(wget.getInfo().getCount() + "/" + wget.getInfo().getLength());
+        long percent = wget.getInfo().getCount() * 100 / wget.getInfo().getLength();
+        if (percent != lastPercent) {
+            logger.info("{} %", percent);
+            lastPercent = percent;
+        }
     }
 }

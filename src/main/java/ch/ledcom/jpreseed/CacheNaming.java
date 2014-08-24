@@ -27,12 +27,10 @@ public class CacheNaming {
         this.cacheDirectory = cacheDirectory;
     }
 
-    public Path toPath(URI uri) {
+    public final Path toPath(URI uri) {
         Path target = cacheDirectory.resolve(uri.getHost());
-        if (!isNullOrEmpty(uri.getPath())) {
-            for (String folder : uri.getPath().split("/")) {
-                target = target.resolve(folder);
-            }
+        for (String folder : uri.getPath().split("/")) {
+            target = target.resolve(folder);
         }
         if (!isNullOrEmpty(uri.getQuery())) {
             target = target.resolve(uri.getQuery());

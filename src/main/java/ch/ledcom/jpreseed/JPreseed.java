@@ -24,16 +24,21 @@ import java.nio.file.Paths;
 public class JPreseed {
 
     public static final String JPRESEED_DIR = ".jpreseed";
+    private final CachedDownloader downloader;
+
+    public JPreseed() {
+        String homeDir = System.getProperty("user.home");
+        Path cacheDirectory = Paths.get(homeDir, JPRESEED_DIR, "cache");
+        downloader = new CachedDownloader(new CacheNaming(cacheDirectory));
+    }
+
+    public final void create(URI imageUrl) throws IOException {
+        new UsbCreator(downloader, imageUrl).create();
+    }
 
     public static void main(String[] args) throws URISyntaxException, IOException {
-        URI IMAGE_URL = new URI("http://archive.ubuntu.com/ubuntu/dists/trusty-updates/main/installer-amd64/current/images/netboot/boot.img.gz");
-
-        String homeDir = System.getProperty("user.home");
-
-        Path cacheDirectory = Paths.get(homeDir, JPRESEED_DIR, "cache");
-
-        CachedDownloader cachedDownloader = new CachedDownloader(new CacheNaming(cacheDirectory));
-        new UsbCreator(cachedDownloader, IMAGE_URL).create();
+        URI imageUrl = new URI("http://archive.ubuntu.com/ubuntu/dists/trusty-updates/main/installer-amd64/current/images/netboot/boot.img.gz");
+        new JPreseed().create(imageUrl);
     }
 
 }

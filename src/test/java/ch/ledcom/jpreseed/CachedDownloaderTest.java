@@ -15,23 +15,81 @@
  */
 package ch.ledcom.jpreseed;
 
-import org.junit.Ignore;
+import ch.ledcom.jpreseed.utils.DeletingFileVisitor;
+import com.github.tomakehurst.wiremock.junit.WireMockRule;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import static com.github.tomakehurst.wiremock.client.WireMock.*;
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class CachedDownloaderTest {
+    private static final int HTTP_PORT = 9999;
+    private static final String TEST_FILENAME = "/test.txt";
+    private static final String URL_UNDER_TEST = "http://localhost:" + HTTP_PORT + TEST_FILENAME;
+    private static final String FILE_CONTENT = "Hello world !";
+    private final Path CACHE_DIRECTORY = Paths.get("target/test-downloads");
+
+    @Rule
+    public WireMockRule wireMockRule = new WireMockRule(HTTP_PORT);
+
+    private CachedDownloader downloader;
+
+    @Before
+    public void createDownloader() {
+        downloader = new CachedDownloader(new CacheNaming(CACHE_DIRECTORY));
+    }
 
     @Test
-    @Ignore("manual test")
-    public void testDownload() throws URISyntaxException, IOException {
-        Path cacheDirectory = Paths.get("target/test-downloads");
-        CachedDownloader downloader = new CachedDownloader(new CacheNaming(cacheDirectory));
-        downloader.download(new URI("http://archive.ubuntu.com/ubuntu/dists/trusty-updates/main/installer-amd64/current/images/netboot/boot.img.gz"));
+    public void downloadCreateFileOnDisk() throws URISyntaxException, IOException {
+        stubFileToDownload();
+
+        Path downloadedFile = downloader.download(new URI(URL_UNDER_TEST));
+        assertThat(downloadedFile.toFile()).hasContent(FILE_CONTENT);
+
+        verify(getRequestedFor(urlEqualTo(TEST_FILENAME)));
+    }
+
+    @Test
+    public void secondDownloadGetsFileFromCache() throws URISyntaxException, IOException {
+        stubFileToDownload();
+
+        Path downloadedFile = downloader.download(new URI(URL_UNDER_TEST));
+        assertThat(downloadedFile.toFile()).hasContent(FILE_CONTENT);
+        verify(getRequestedFor(urlEqualTo(TEST_FILENAME)));
+
+        int numberOfRequestsAfterFirstCall = wireMockRule.findAll(getRequestedFor(urlEqualTo(TEST_FILENAME))).size();
+
+        downloadedFile = downloader.download(new URI(URL_UNDER_TEST));
+
+        assertThat(downloadedFile.toFile()).hasContent(FILE_CONTENT);
+        int numberOfRequestsAfterSecondCall = wireMockRule.findAll(getRequestedFor(urlEqualTo(TEST_FILENAME))).size();
+
+        assertThat(numberOfRequestsAfterSecondCall).isEqualTo(numberOfRequestsAfterFirstCall);
+    }
+
+    private void stubFileToDownload() {
+        stubFor(get(urlEqualTo(TEST_FILENAME))
+                .willReturn(aResponse()
+                        .withStatus(200)
+                        .withBody(FILE_CONTENT)));
+    }
+
+    @Before
+    @After
+    public void removeDownloadDirectory() throws IOException {
+        if (Files.exists(CACHE_DIRECTORY)) {
+            Files.walkFileTree(CACHE_DIRECTORY, new DeletingFileVisitor());
+        }
     }
 
 }

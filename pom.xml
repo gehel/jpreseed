@@ -24,7 +24,7 @@
     <parent>
         <groupId>ch.ledcom</groupId>
         <artifactId>ledcom-parent-pom</artifactId>
-        <version>1.26-SNAPSHOT</version>
+        <version>1.30</version>
     </parent>
 
     <groupId>ch.ledcom.jpreseed</groupId>
@@ -37,16 +37,21 @@
     <url>http://gehel.github.com/jpreseed/</url>
     <inceptionYear>2014</inceptionYear>
 
+    <properties>
+        <verify.checkstyle.max.violations>7</verify.checkstyle.max.violations>
+        <verify.coverage.threshold>96</verify.coverage.threshold>
+        <verify.mutation.threshold>63</verify.mutation.threshold>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>17.0</version>
         </dependency>
         <dependency>
             <groupId>de.waldheinz</groupId>
             <artifactId>fat32-lib</artifactId>
-            <version>0.6.4</version>
+            <version>0.6.5</version>
         </dependency>
         <dependency>
             <groupId>com.github.axet</groupId>
@@ -58,7 +63,48 @@
             <artifactId>jiic</artifactId>
             <version>1.2.2</version>
         </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>log4j-over-slf4j</artifactId>
+            <version>1.7.7</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.tomakehurst</groupId>
+            <artifactId>wiremock</artifactId>
+            <version>1.47</version>
+            <!-- Include this if you have dependency conflicts for Guava, Jetty, Jackson or Apache HTTP Client -->
+            <classifier>standalone</classifier>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-checkstyle-plugin</artifactId>
+                    <configuration>
+                        <suppressionsLocation>src/etc/checkstyle-suppressions.xml</suppressionsLocation>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>cobertura-maven-plugin</artifactId>
+                    <configuration>
+                        <check>
+                            <branchRate>0</branchRate>
+                            <lineRate>0</lineRate>
+                            <totalBranchRate>91</totalBranchRate>
+                            <totalLineRate>55</totalLineRate>
+                            <packageBranchRate>91</packageBranchRate>
+                            <packageLineRate>55</packageLineRate>
+                        </check>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 
     <issueManagement>
         <system>GitHub</system>

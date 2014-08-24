@@ -18,7 +18,7 @@ package ch.ledcom.jpreseed;
 import java.io.IOException;
 import java.net.URI;
 
-public class UsbCreator {
+public class UsbCreator implements AutoCloseable {
 
     private final CachedDownloader cachedDownloader;
     private final URI imageURI;
@@ -28,17 +28,12 @@ public class UsbCreator {
         this.imageURI = imageURI;
     }
 
-    public void create() throws IOException {
+    public final void create() throws IOException {
         cachedDownloader.download(imageURI);
         prepareImage();
         mountImage();
         repackageInitrd();
         repackageImage();
-        cleanup();
-    }
-
-    private void cleanup() {
-
     }
 
     private void repackageImage() {
@@ -57,4 +52,8 @@ public class UsbCreator {
 
     }
 
+    @Override
+    public void close() throws IOException {
+
+    }
 }

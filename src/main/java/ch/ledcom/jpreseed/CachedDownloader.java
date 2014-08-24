@@ -31,7 +31,8 @@ public class CachedDownloader {
         this.cacheNaming = cacheNaming;
     }
 
-    public Path download(URI uri) throws IOException {
+    public final Path download(URI uri) throws IOException {
+        // TODO: handle failed / partial download and restarts
         Path target = cacheNaming.toPath(uri);
         if (!Files.exists(target)) {
             doDownload(uri, target);
@@ -40,8 +41,7 @@ public class CachedDownloader {
     }
 
     private void doDownload(URI uri, Path target) throws IOException {
-        Files.createDirectories(target.getParent());
-        final WGet wget = new WGet(uri.toURL(), target.toFile());
+        WGet wget = new WGet(uri.toURL(), target.toFile());
         wget.download(new AtomicBoolean(false), new DownloadReporter(wget));
     }
 
