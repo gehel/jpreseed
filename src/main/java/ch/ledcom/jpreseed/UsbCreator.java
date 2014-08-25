@@ -15,25 +15,46 @@
  */
 package ch.ledcom.jpreseed;
 
+import com.google.common.io.ByteBufferDataInputStream;
+import de.waldheinz.fs.FileSystemFactory;
+import de.waldheinz.fs.FsFile;
+import de.waldheinz.fs.util.FileDisk;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
-import java.net.URI;
+import java.io.OutputStream;
+import java.nio.ByteBuffer;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.Collections;
+import java.util.zip.GZIPInputStream;
 
 public class UsbCreator implements AutoCloseable {
 
-    private final CachedDownloader cachedDownloader;
-    private final URI imageURI;
+    private final Path bootImgGz;
 
-    public UsbCreator(CachedDownloader cachedDownloader, URI imageURI) {
-        this.cachedDownloader = cachedDownloader;
-        this.imageURI = imageURI;
+    public UsbCreator(Path bootImgGz) {
+        this.bootImgGz = bootImgGz;
     }
 
     public final void create() throws IOException {
-        cachedDownloader.download(imageURI);
-        prepareImage();
+        extractInitrdFromImage();
         mountImage();
         repackageInitrd();
         repackageImage();
+    }
+
+    private void extractInitrdFromImage() throws IOException {
+        Path bootImg = Files.createTempDirectory("bootImg");
+        Files.copy(new GZIPInputStream(Files.newInputStream(bootImgGz)), bootImg);
+        FsFile initrdGzFile = FileSystemFactory.create(new FileDisk(bootImg.toFile(), true), true)
+                .getRoot().getEntry("initrd.gz").getFile();
+        ByteBuffer buffer = ByteBuffer.allocate((int) initrdGzFile.getLength());
+        OutputStream newInitrd = new ByteArrayOutputStream();
+        new InitrdRepacker(new ByteBufferDataInputStream(buffer))
+                .addFiles(Collections.<File>emptySet())
+                .repack(newInitrd);
     }
 
     private void repackageImage() {
@@ -45,10 +66,6 @@ public class UsbCreator implements AutoCloseable {
     }
 
     private void mountImage() {
-
-    }
-
-    private void prepareImage() {
 
     }
 

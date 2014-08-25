@@ -38,9 +38,9 @@
     <inceptionYear>2014</inceptionYear>
 
     <properties>
-        <verify.checkstyle.max.violations>7</verify.checkstyle.max.violations>
-        <verify.coverage.threshold>96</verify.coverage.threshold>
-        <verify.mutation.threshold>63</verify.mutation.threshold>
+        <verify.checkstyle.max.violations>65</verify.checkstyle.max.violations>
+        <verify.coverage.threshold>95</verify.coverage.threshold>
+        <verify.mutation.threshold>59</verify.mutation.threshold>
     </properties>
 
     <dependencies>
@@ -62,6 +62,11 @@
             <groupId>com.github.stephenc.java-iso-tools</groupId>
             <artifactId>jiic</artifactId>
             <version>1.2.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-compress</artifactId>
+            <version>1.8.1</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -95,11 +100,17 @@
                         <check>
                             <branchRate>0</branchRate>
                             <lineRate>0</lineRate>
-                            <totalBranchRate>91</totalBranchRate>
-                            <totalLineRate>55</totalLineRate>
-                            <packageBranchRate>91</packageBranchRate>
-                            <packageLineRate>55</packageLineRate>
+                            <totalBranchRate>58</totalBranchRate>
+                            <totalLineRate>64</totalLineRate>
+                            <packageBranchRate>58</packageBranchRate>
+                            <packageLineRate>64</packageLineRate>
+
                         </check>
+                        <instrumentation>
+                            <excludes>
+                                <exclude>com/google/common/io/*.class</exclude>
+                            </excludes>
+                        </instrumentation>
                     </configuration>
                 </plugin>
             </plugins>
