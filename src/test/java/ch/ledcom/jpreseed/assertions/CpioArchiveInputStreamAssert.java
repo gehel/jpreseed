@@ -30,7 +30,7 @@ public class CpioArchiveInputStreamAssert extends AbstractAssert<CpioArchiveInpu
         return new CpioArchiveInputStreamAssert(actual);
     }
 
-    public void hasEntry(String name) throws IOException {
+    public final void hasEntry(String name) throws IOException {
         isNotNull();
 
         CpioArchiveEntry cpioEntry;

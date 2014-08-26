@@ -38,7 +38,7 @@
     <inceptionYear>2014</inceptionYear>
 
     <properties>
-        <verify.checkstyle.max.violations>65</verify.checkstyle.max.violations>
+        <verify.checkstyle.max.violations>69</verify.checkstyle.max.violations>
         <verify.coverage.threshold>95</verify.coverage.threshold>
         <verify.mutation.threshold>59</verify.mutation.threshold>
     </properties>

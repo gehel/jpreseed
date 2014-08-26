@@ -21,7 +21,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.*;
-import java.util.Collections;
 import java.util.zip.GZIPInputStream;
 
 import static ch.ledcom.jpreseed.assertions.MyAssertions.assertThat;
@@ -32,7 +31,7 @@ public class InitrdRepackerTest {
     private final File repackedArchiveFile = new File("cpio-repacked.gz");
 
     @Test
-    public void repackWithoutAdditionalFiles() throws IOException {
+    public final void repackWithoutAdditionalFiles() throws IOException {
         try (
                 InputStream initrdGz = InitrdRepackerTest.class.getResourceAsStream("/cpio-test-archive.gz");
                 FileOutputStream out = new FileOutputStream(repackedArchiveFile)) {
@@ -43,7 +42,7 @@ public class InitrdRepackerTest {
     }
 
     @Test
-    public void addedFileIsPresentInArchive() throws IOException {
+    public final void addedFileIsPresentInArchive() throws IOException {
         try (
                 InputStream initrdGz = InitrdRepackerTest.class.getResourceAsStream("/cpio-test-archive.gz");
                 FileOutputStream out = new FileOutputStream(repackedArchiveFile)) {
@@ -58,7 +57,7 @@ public class InitrdRepackerTest {
 
     @Before
     @After
-    public void removedRepackedArchive() {
+    public final void removedRepackedArchive() {
         repackedArchiveFile.delete();
     }
 

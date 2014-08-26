@@ -20,7 +20,6 @@ import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.nio.file.FileVisitResult;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
@@ -33,7 +32,7 @@ public class DeletingFileVisitor extends SimpleFileVisitor<Path> {
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     @Override
-    public FileVisitResult visitFile(Path file, BasicFileAttributes attributes) throws IOException {
+    public final FileVisitResult visitFile(Path file, BasicFileAttributes attributes) throws IOException {
         if (attributes.isRegularFile()) {
             logger.debug("Deleting Regular File: [{}]", file.getFileName());
             delete(file);
@@ -42,14 +41,14 @@ public class DeletingFileVisitor extends SimpleFileVisitor<Path> {
     }
 
     @Override
-    public FileVisitResult postVisitDirectory(Path directory, IOException ioe) throws IOException {
+    public final FileVisitResult postVisitDirectory(Path directory, IOException ioe) throws IOException {
         logger.debug("Deleting Directory: [{}]", directory.getFileName());
         delete(directory);
         return CONTINUE;
     }
 
     @Override
-    public FileVisitResult visitFileFailed(Path file, IOException ioe) throws IOException {
+    public final FileVisitResult visitFileFailed(Path file, IOException ioe) throws IOException {
         logger.error("Something went wrong while working on : [{}]", file.getFileName(), ioe);
         return CONTINUE;
     }

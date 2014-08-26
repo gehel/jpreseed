@@ -31,42 +31,42 @@ public class CacheNamingTest {
     private static final Path CACHE_DIRECTORY = Paths.get("/cacheDirectory");
 
     @Before
-    public void initializeCacheNaming() {
+    public final void initializeCacheNaming() {
         cacheNaming = new CacheNaming(CACHE_DIRECTORY);
     }
 
     @Test
-    public void testSimpleUrl() throws URISyntaxException {
+    public final void testSimpleUrl() throws URISyntaxException {
         assertThat(cacheNaming.toPath(new URI("http://test.net/path/to/file.ext")).toString())
                 .isEqualTo("/cacheDirectory/test.net/path/to/file.ext");
     }
 
     @Test
-    public void testHostOnly() throws URISyntaxException {
+    public final void testHostOnly() throws URISyntaxException {
         assertThat(cacheNaming.toPath(new URI("http://test.net")).toString())
                 .isEqualTo("/cacheDirectory/test.net");
     }
 
     @Test
-    public void testHostWithOnlyRootSlash() throws URISyntaxException {
+    public final void testHostWithOnlyRootSlash() throws URISyntaxException {
         assertThat(cacheNaming.toPath(new URI("http://test.net/")).toString())
                 .isEqualTo("/cacheDirectory/test.net");
     }
 
     @Test
-    public void testFileOnly() throws URISyntaxException {
+    public final void testFileOnly() throws URISyntaxException {
         assertThat(cacheNaming.toPath(new URI("http://test.net/file.ext")).toString())
                 .isEqualTo("/cacheDirectory/test.net/file.ext");
     }
 
     @Test
-    public void testWithParameters() throws URISyntaxException {
+    public final void testWithParameters() throws URISyntaxException {
         assertThat(cacheNaming.toPath(new URI("http://test.net/file.ext?param=value")).toString())
                 .isEqualTo("/cacheDirectory/test.net/file.ext/param=value");
     }
 
     @Test
-    public void testWithFragments() throws URISyntaxException {
+    public final void testWithFragments() throws URISyntaxException {
         assertThat(cacheNaming.toPath(new URI("http://test.net/file.ext#toto")).toString())
                 .isEqualTo("/cacheDirectory/test.net/file.ext/toto");
     }

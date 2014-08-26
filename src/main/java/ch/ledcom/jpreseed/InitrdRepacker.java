@@ -15,12 +15,14 @@
  */
 package ch.ledcom.jpreseed;
 
+import com.google.common.base.Function;
 import org.apache.commons.compress.archivers.cpio.CpioArchiveEntry;
 import org.apache.commons.compress.archivers.cpio.CpioArchiveInputStream;
 import org.apache.commons.compress.archivers.cpio.CpioArchiveOutputStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.annotation.Nonnull;
 import java.io.*;
 import java.util.Collection;
 import java.util.HashSet;
@@ -28,6 +30,7 @@ import java.util.Set;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
+import static com.google.common.collect.FluentIterable.from;
 import static com.google.common.io.ByteStreams.copy;
 
 /**
@@ -42,6 +45,7 @@ public class InitrdRepacker {
     private final InputStream initrdGz;
 
     private final Set<File> additionalFiles = new HashSet<>();
+    private final ToName toName = new ToName();
 
     public InitrdRepacker(InputStream initrdGz) {
         this.initrdGz = initrdGz;
@@ -61,11 +65,13 @@ public class InitrdRepacker {
 
             // add files from base archive
             while ((cpioEntry = cpioIn.getNextCPIOEntry()) != null) {
-                logger.info("Repacking [{}]", cpioEntry.getName());
-                cpioOut.putArchiveEntry(cpioEntry);
-                long bytesCopied = copy(cpioIn, cpioOut);
-                cpioOut.closeArchiveEntry();
-                logger.debug("Copied [{}] bytes", bytesCopied);
+                if (from(additionalFiles).transform(toName).contains(cpioEntry.getName())) {
+                    logger.info("Repacking [{}]", cpioEntry.getName());
+                    cpioOut.putArchiveEntry(cpioEntry);
+                    long bytesCopied = copy(cpioIn, cpioOut);
+                    cpioOut.closeArchiveEntry();
+                    logger.debug("Copied [{}] bytes", bytesCopied);
+                }
             }
 
             // additional files
@@ -80,4 +86,11 @@ public class InitrdRepacker {
         }
     }
 
+    private static class ToName implements Function<File, String> {
+        @Nonnull
+        @Override
+        public String apply(@Nonnull File input) {
+            return input.getName();
+        }
+    }
 }

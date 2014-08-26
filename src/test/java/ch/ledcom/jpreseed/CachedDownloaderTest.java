@@ -17,6 +17,7 @@ package ch.ledcom.jpreseed;
 
 import ch.ledcom.jpreseed.utils.DeletingFileVisitor;
 import com.github.tomakehurst.wiremock.junit.WireMockRule;
+import com.google.common.annotations.VisibleForTesting;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
@@ -37,20 +38,21 @@ public class CachedDownloaderTest {
     private static final String TEST_FILENAME = "/test.txt";
     private static final String URL_UNDER_TEST = "http://localhost:" + HTTP_PORT + TEST_FILENAME;
     private static final String FILE_CONTENT = "Hello world !";
-    private final Path CACHE_DIRECTORY = Paths.get("target/test-downloads");
+    private static final Path CACHE_DIRECTORY = Paths.get("target/test-downloads");
 
     @Rule
+    @VisibleForTesting
     public WireMockRule wireMockRule = new WireMockRule(HTTP_PORT);
 
     private CachedDownloader downloader;
 
     @Before
-    public void createDownloader() {
+    public final void createDownloader() {
         downloader = new CachedDownloader(new CacheNaming(CACHE_DIRECTORY));
     }
 
     @Test
-    public void downloadCreateFileOnDisk() throws URISyntaxException, IOException {
+    public final void downloadCreateFileOnDisk() throws URISyntaxException, IOException {
         stubFileToDownload();
 
         Path downloadedFile = downloader.download(new URI(URL_UNDER_TEST));
@@ -60,7 +62,7 @@ public class CachedDownloaderTest {
     }
 
     @Test
-    public void secondDownloadGetsFileFromCache() throws URISyntaxException, IOException {
+    public final void secondDownloadGetsFileFromCache() throws URISyntaxException, IOException {
         stubFileToDownload();
 
         Path downloadedFile = downloader.download(new URI(URL_UNDER_TEST));
@@ -86,7 +88,7 @@ public class CachedDownloaderTest {
 
     @Before
     @After
-    public void removeDownloadDirectory() throws IOException {
+    public final void removeDownloadDirectory() throws IOException {
         if (Files.exists(CACHE_DIRECTORY)) {
             Files.walkFileTree(CACHE_DIRECTORY, new DeletingFileVisitor());
         }
