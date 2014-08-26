@@ -104,13 +104,21 @@
                             <totalLineRate>64</totalLineRate>
                             <packageBranchRate>58</packageBranchRate>
                             <packageLineRate>64</packageLineRate>
-
                         </check>
                         <instrumentation>
                             <excludes>
                                 <exclude>com/google/common/io/*.class</exclude>
                             </excludes>
                         </instrumentation>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>javancss-maven-plugin</artifactId>
+                    <configuration>
+                        <excludes>
+                            <exclude>ch/ledcom/jpreseed/InitrdRepacker.java</exclude>
+                        </excludes>
                     </configuration>
                 </plugin>
             </plugins>

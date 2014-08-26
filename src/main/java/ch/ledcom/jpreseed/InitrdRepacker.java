@@ -30,6 +30,11 @@ import java.util.zip.GZIPOutputStream;
 
 import static com.google.common.io.ByteStreams.copy;
 
+/**
+ * WARNING: this repacker will only add files at the root of the archive. This
+ * is sufficient for the purpose required by this project, but is not enough
+ * for a generic repacker ...
+ */
 public class InitrdRepacker {
 
     private final Logger logger = LoggerFactory.getLogger(getClass());
