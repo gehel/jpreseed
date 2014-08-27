@@ -38,7 +38,7 @@ public class InitrdRepackerTest {
             new InitrdRepacker(initrdGz).repack(out);
         }
 
-        assertThat(gzippedCpio(repackedArchiveFile)).hasEntry("hello.txt");
+        assertThat(gzippedCpio(repackedArchiveFile)).hasSingleEntry("hello.txt");
     }
 
     @Test
@@ -52,7 +52,21 @@ public class InitrdRepackerTest {
                     .repack(out);
         }
 
-        assertThat(gzippedCpio(repackedArchiveFile)).hasEntry("hello_world.txt");
+        assertThat(gzippedCpio(repackedArchiveFile)).hasSingleEntry("hello_world.txt");
+    }
+
+    @Test
+    public final void addingExistingFileDoesNotCreateDuplicateEntries() throws IOException {
+        try (
+                InputStream initrdGz = InitrdRepackerTest.class.getResourceAsStream("/cpio-test-archive.gz");
+                FileOutputStream out = new FileOutputStream(repackedArchiveFile)) {
+            File fileToAdd = new File("src/test/resources/hello.txt");
+            new InitrdRepacker(initrdGz)
+                    .addFiles(singleton(fileToAdd))
+                    .repack(out);
+        }
+
+        assertThat(gzippedCpio(repackedArchiveFile)).hasSingleEntry("hello.txt");
     }
 
     @Before

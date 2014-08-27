@@ -49,11 +49,13 @@ public class ByteBufferDataInputStream extends InputStream implements DataInput 
      */
     private static RuntimeException convertException(RuntimeException e)
             throws IOException {
-        if (e instanceof BufferUnderflowException)
+        if (e instanceof BufferUnderflowException) {
             throw (IOException) new EOFException().initCause(e);
+        }
 
-        if (e instanceof NullPointerException)
+        if (e instanceof NullPointerException) {
             throw (IOException) new ClosedChannelException();
+        }
 
         return e;
     }
@@ -65,7 +67,7 @@ public class ByteBufferDataInputStream extends InputStream implements DataInput 
     }
 
     @Override
-    public int available() throws IOException {
+    public final int available() throws IOException {
         try {
             return buf.remaining();
         } catch (RuntimeException e) {
@@ -74,7 +76,7 @@ public class ByteBufferDataInputStream extends InputStream implements DataInput 
     }
 
     @Override
-    public void close() throws IOException {
+    public final void close() throws IOException {
         buf = null;
     }
 
@@ -83,15 +85,16 @@ public class ByteBufferDataInputStream extends InputStream implements DataInput 
      *
      * @return backing buffer, or <code>null</code> if this stream is closed
      */
-    public ByteBuffer getBuffer() {
+    public final ByteBuffer getBuffer() {
         return buf;
     }
 
     @Override
-    public int read() throws IOException {
+    public final int read() throws IOException {
         try {
-            if (buf.remaining() == 0)
+            if (buf.remaining() == 0) {
                 return -1;
+            }
 
             return (((int) buf.get()) & 0xff);
         } catch (RuntimeException e) {
@@ -100,13 +103,14 @@ public class ByteBufferDataInputStream extends InputStream implements DataInput 
     }
 
     @Override
-    public int read(byte[] b, int off, int len) throws IOException {
+    public final int read(byte[] b, int off, int len) throws IOException {
         Preconditions.checkNotNull(b);
 
         try {
             int remain = buf.remaining();
-            if (remain == 0)
+            if (remain == 0) {
                 return -1;
+            }
 
             int actualLen = Math.min(len, remain);
             buf.get(b, off, actualLen);
@@ -117,7 +121,7 @@ public class ByteBufferDataInputStream extends InputStream implements DataInput 
     }
 
     @Override
-    public boolean readBoolean() throws IOException {
+    public final boolean readBoolean() throws IOException {
         try {
             return (buf.get() != 0);
         } catch (RuntimeException e) {
@@ -126,7 +130,7 @@ public class ByteBufferDataInputStream extends InputStream implements DataInput 
     }
 
     @Override
-    public byte readByte() throws IOException {
+    public final byte readByte() throws IOException {
         try {
             return buf.get();
         } catch (RuntimeException e) {
@@ -135,7 +139,7 @@ public class ByteBufferDataInputStream extends InputStream implements DataInput 
     }
 
     @Override
-    public char readChar() throws IOException {
+    public final char readChar() throws IOException {
         try {
             return buf.getChar();
         } catch (RuntimeException e) {
@@ -144,7 +148,7 @@ public class ByteBufferDataInputStream extends InputStream implements DataInput 
     }
 
     @Override
-    public double readDouble() throws IOException {
+    public final double readDouble() throws IOException {
         try {
             return buf.getDouble();
         } catch (RuntimeException e) {
@@ -153,7 +157,7 @@ public class ByteBufferDataInputStream extends InputStream implements DataInput 
     }
 
     @Override
-    public float readFloat() throws IOException {
+    public final float readFloat() throws IOException {
         try {
             return buf.getFloat();
         } catch (RuntimeException e) {
@@ -162,7 +166,7 @@ public class ByteBufferDataInputStream extends InputStream implements DataInput 
     }
 
     @Override
-    public void readFully(byte[] b) throws IOException {
+    public final void readFully(byte[] b) throws IOException {
         try {
             buf.get(b);
         } catch (RuntimeException e) {
@@ -171,7 +175,7 @@ public class ByteBufferDataInputStream extends InputStream implements DataInput 
     }
 
     @Override
-    public void readFully(byte[] b, int off, int len) throws IOException {
+    public final void readFully(byte[] b, int off, int len) throws IOException {
         Preconditions.checkNotNull(b);
 
         try {
@@ -182,7 +186,7 @@ public class ByteBufferDataInputStream extends InputStream implements DataInput 
     }
 
     @Override
-    public int readInt() throws IOException {
+    public final int readInt() throws IOException {
         try {
             return buf.getInt();
         } catch (RuntimeException e) {
@@ -192,17 +196,19 @@ public class ByteBufferDataInputStream extends InputStream implements DataInput 
 
     @Deprecated
     @Override
-    public String readLine() throws IOException {
+    public final String readLine() throws IOException {
         StringBuilder sbuf = null;
 
         try {
             byte b;
             while ((b = buf.get()) != '\n') {
-                if (sbuf == null)
+                if (sbuf == null) {
                     sbuf = new StringBuilder();
+                }
 
-                if (b != '\r')
+                if (b != '\r') {
                     sbuf.append((char) b);
+                }
             }
         } catch (BufferUnderflowException e) {
             // EOF reached; fall out of loop.
@@ -214,7 +220,7 @@ public class ByteBufferDataInputStream extends InputStream implements DataInput 
     }
 
     @Override
-    public long readLong() throws IOException {
+    public final long readLong() throws IOException {
         try {
             return buf.getLong();
         } catch (RuntimeException e) {
@@ -223,7 +229,7 @@ public class ByteBufferDataInputStream extends InputStream implements DataInput 
     }
 
     @Override
-    public short readShort() throws IOException {
+    public final short readShort() throws IOException {
         try {
             return buf.getShort();
         } catch (RuntimeException e) {
@@ -232,7 +238,7 @@ public class ByteBufferDataInputStream extends InputStream implements DataInput 
     }
 
     @Override
-    public int readUnsignedByte() throws IOException {
+    public final int readUnsignedByte() throws IOException {
         try {
             return (((int) buf.get()) & 0xff);
         } catch (RuntimeException e) {
@@ -241,7 +247,7 @@ public class ByteBufferDataInputStream extends InputStream implements DataInput 
     }
 
     @Override
-    public int readUnsignedShort() throws IOException {
+    public final int readUnsignedShort() throws IOException {
         try {
             return (((int) buf.getShort()) & 0xffff);
         } catch (RuntimeException e) {
@@ -250,12 +256,12 @@ public class ByteBufferDataInputStream extends InputStream implements DataInput 
     }
 
     @Override
-    public String readUTF() throws IOException {
+    public final String readUTF() throws IOException {
         return DataInputStream.readUTF(this);
     }
 
     @Override
-    public long skip(long n) throws IOException {
+    public final long skip(long n) throws IOException {
         try {
             // remain is always <intmax, so the cast is OK here
             int actualSkip = (int) Math.min(n, buf.remaining());
@@ -269,7 +275,7 @@ public class ByteBufferDataInputStream extends InputStream implements DataInput 
     }
 
     @Override
-    public int skipBytes(int n) throws IOException {
+    public final int skipBytes(int n) throws IOException {
         try {
             int limit = buf.limit();
             int curpos = buf.position();

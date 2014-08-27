@@ -61,17 +61,19 @@ public class ByteBufferDataOutputStream extends OutputStream implements
      */
     private static RuntimeException convertException(RuntimeException e)
             throws IOException {
-        if (e instanceof BufferOverflowException)
+        if (e instanceof BufferOverflowException) {
             throw (IOException) new EOFException().initCause(e);
+        }
 
-        if (e instanceof NullPointerException)
+        if (e instanceof NullPointerException) {
             throw (IOException) new ClosedChannelException();
+        }
 
         return e;
     }
 
     @Override
-    public void close() throws IOException {
+    public final void close() throws IOException {
         try {
             flush();
         } finally {
@@ -85,13 +87,14 @@ public class ByteBufferDataOutputStream extends OutputStream implements
      * flushes written data to disk by calling {@link MappedByteBuffer#force()}.
      */
     @Override
-    public void flush() throws IOException {
-        if (buf instanceof MappedByteBuffer)
+    public final void flush() throws IOException {
+        if (buf instanceof MappedByteBuffer) {
             try {
                 ((MappedByteBuffer) buf).force();
             } catch (RuntimeException e) {
                 throw convertException(e);
             }
+        }
     }
 
     /**
@@ -99,12 +102,12 @@ public class ByteBufferDataOutputStream extends OutputStream implements
      *
      * @return backing buffer, or <code>null</code> if this stream is closed
      */
-    public ByteBuffer getBuffer() {
+    public final ByteBuffer getBuffer() {
         return buf;
     }
 
     @Override
-    public void write(byte[] b, int off, int len) throws IOException {
+    public final void write(byte[] b, int off, int len) throws IOException {
         Preconditions.checkNotNull(b);
 
         try {
@@ -115,7 +118,7 @@ public class ByteBufferDataOutputStream extends OutputStream implements
     }
 
     @Override
-    public void write(int b) throws IOException {
+    public final void write(int b) throws IOException {
         try {
             buf.put((byte) b);
         } catch (RuntimeException e) {
@@ -124,32 +127,33 @@ public class ByteBufferDataOutputStream extends OutputStream implements
     }
 
     @Override
-    public void writeBoolean(boolean v) throws IOException {
+    public final void writeBoolean(boolean v) throws IOException {
         write(v ? 1 : 0);
     }
 
     @Override
-    public void writeByte(int v) throws IOException {
+    public final void writeByte(int v) throws IOException {
         write(v);
     }
 
     @Deprecated
     @Override
-    public void writeBytes(String s) throws IOException {
+    public final void writeBytes(String s) throws IOException {
         Preconditions.checkNotNull(s);
 
         try {
             int len = s.length();
 
-            for (int i = 0; i < len; ++i)
+            for (int i = 0; i < len; ++i) {
                 buf.put((byte) s.charAt(i));
+            }
         } catch (RuntimeException e) {
             throw convertException(e);
         }
     }
 
     @Override
-    public void writeChar(int v) throws IOException {
+    public final void writeChar(int v) throws IOException {
         try {
             buf.putChar((char) v);
         } catch (RuntimeException e) {
@@ -158,21 +162,22 @@ public class ByteBufferDataOutputStream extends OutputStream implements
     }
 
     @Override
-    public void writeChars(String s) throws IOException {
+    public final void writeChars(String s) throws IOException {
         Preconditions.checkNotNull(s);
 
         try {
             int len = s.length();
 
-            for (int i = 0; i < len; ++i)
+            for (int i = 0; i < len; ++i) {
                 buf.putChar(s.charAt(i));
+            }
         } catch (RuntimeException e) {
             throw convertException(e);
         }
     }
 
     @Override
-    public void writeDouble(double v) throws IOException {
+    public final void writeDouble(double v) throws IOException {
         try {
             buf.putDouble(v);
         } catch (RuntimeException e) {
@@ -181,7 +186,7 @@ public class ByteBufferDataOutputStream extends OutputStream implements
     }
 
     @Override
-    public void writeFloat(float v) throws IOException {
+    public final void writeFloat(float v) throws IOException {
         try {
             buf.putFloat(v);
         } catch (RuntimeException e) {
@@ -190,7 +195,7 @@ public class ByteBufferDataOutputStream extends OutputStream implements
     }
 
     @Override
-    public void writeInt(int v) throws IOException {
+    public final void writeInt(int v) throws IOException {
         try {
             buf.putInt(v);
         } catch (RuntimeException e) {
@@ -199,7 +204,7 @@ public class ByteBufferDataOutputStream extends OutputStream implements
     }
 
     @Override
-    public void writeLong(long v) throws IOException {
+    public final void writeLong(long v) throws IOException {
         try {
             buf.putLong(v);
         } catch (RuntimeException e) {
@@ -208,7 +213,7 @@ public class ByteBufferDataOutputStream extends OutputStream implements
     }
 
     @Override
-    public void writeShort(int v) throws IOException {
+    public final void writeShort(int v) throws IOException {
         try {
             buf.putShort((short) v);
         } catch (RuntimeException e) {
@@ -217,15 +222,16 @@ public class ByteBufferDataOutputStream extends OutputStream implements
     }
 
     @Override
-    public void writeUTF(String s) throws IOException {
+    public final void writeUTF(String s) throws IOException {
         Preconditions.checkNotNull(s);
 
         /*
          * Unfortunately the internal method for this isn't exposed, so it must
          * be done through a wrapper instance.
          */
-        if (utfEncoder == null)
+        if (utfEncoder == null) {
             utfEncoder = new DataOutputStream(this);
+        }
 
         utfEncoder.writeUTF(s);
     }

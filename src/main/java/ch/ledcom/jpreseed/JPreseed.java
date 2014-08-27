@@ -20,6 +20,7 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Collections;
 
 public class JPreseed {
 
@@ -33,7 +34,12 @@ public class JPreseed {
     }
 
     public final void create(URI imageUrl) throws IOException {
-        //new UsbCreator(downloader.download(imageUrl)).create();
+        new UsbCreator(
+                downloader.download(imageUrl),
+                Paths.get("boot.img"),
+                Paths.get("syslinux.cfg"),
+                Collections.<Path>emptySet()
+        ).create();
     }
 
     public static void main(String[] args) throws URISyntaxException, IOException {

@@ -30,7 +30,7 @@ import java.util.Set;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
-import static com.google.common.collect.FluentIterable.from;
+import static com.google.common.collect.Collections2.transform;
 import static com.google.common.io.ByteStreams.copy;
 
 /**
@@ -65,7 +65,7 @@ public class InitrdRepacker {
 
             // add files from base archive
             while ((cpioEntry = cpioIn.getNextCPIOEntry()) != null) {
-                if (from(additionalFiles).transform(toName).contains(cpioEntry.getName())) {
+                if (!transform(additionalFiles, toName).contains(cpioEntry.getName())) {
                     logger.info("Repacking [{}]", cpioEntry.getName());
                     cpioOut.putArchiveEntry(cpioEntry);
                     long bytesCopied = copy(cpioIn, cpioOut);

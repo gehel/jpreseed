@@ -38,9 +38,9 @@
     <inceptionYear>2014</inceptionYear>
 
     <properties>
-        <verify.checkstyle.max.violations>69</verify.checkstyle.max.violations>
+        <verify.checkstyle.max.violations>19</verify.checkstyle.max.violations>
         <verify.coverage.threshold>95</verify.coverage.threshold>
-        <verify.mutation.threshold>59</verify.mutation.threshold>
+        <verify.mutation.threshold>44</verify.mutation.threshold>
     </properties>
 
     <dependencies>
@@ -100,10 +100,10 @@
                         <check>
                             <branchRate>0</branchRate>
                             <lineRate>0</lineRate>
-                            <totalBranchRate>58</totalBranchRate>
-                            <totalLineRate>64</totalLineRate>
-                            <packageBranchRate>58</packageBranchRate>
-                            <packageLineRate>64</packageLineRate>
+                            <totalBranchRate>40</totalBranchRate>
+                            <totalLineRate>52</totalLineRate>
+                            <packageBranchRate>40</packageBranchRate>
+                            <packageLineRate>52</packageLineRate>
                         </check>
                         <instrumentation>
                             <excludes>

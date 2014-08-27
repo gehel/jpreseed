@@ -30,16 +30,21 @@ public class CpioArchiveInputStreamAssert extends AbstractAssert<CpioArchiveInpu
         return new CpioArchiveInputStreamAssert(actual);
     }
 
-    public final void hasEntry(String name) throws IOException {
+    public final void hasSingleEntry(String name) throws IOException {
         isNotNull();
 
+        int nbOfEntriesMatching = 0;
         CpioArchiveEntry cpioEntry;
         while ((cpioEntry = actual.getNextCPIOEntry()) != null) {
             if (cpioEntry.getName().equals(name)) {
-                return;
+                nbOfEntriesMatching++;
             }
         }
 
-        failWithMessage("Expected entry %s was not found in archive", name);
+        if (nbOfEntriesMatching < 1) {
+            failWithMessage("Expected entry %s was not found in archive.", name);
+        } else if (nbOfEntriesMatching > 1) {
+            failWithMessage("Expected entry %s was found more than once in archive.", name);
+        }
     }
 }
