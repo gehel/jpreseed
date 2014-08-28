@@ -38,14 +38,14 @@ public class UsbCreator {
     private static final String SYSLINUX_CFG = "syslinux.cfg";
     private final Path srcBootImgGz;
     private final Path targetBootImg;
-    private final Path syslinuxcfg;
+    private final Path sysLinuxCfg;
     private final Set<Path> preseedFiles;
     private final PathToFile toFile = new PathToFile();
 
-    public UsbCreator(Path srcBootImgGz, Path targetBootImg, Path syslinuxcfg, Set<Path> preseedFiles) {
+    public UsbCreator(Path srcBootImgGz, Path targetBootImg, Path sysLinuxCfg, Set<Path> preseedFiles) {
         this.srcBootImgGz = srcBootImgGz;
         this.targetBootImg = targetBootImg;
-        this.syslinuxcfg = syslinuxcfg;
+        this.sysLinuxCfg = sysLinuxCfg;
         this.preseedFiles = preseedFiles;
     }
 
@@ -53,11 +53,11 @@ public class UsbCreator {
 
         try (FatModifier fatModifier = new FatModifier(srcBootImgGz)) {
 
-            try (FileChannel syslinuxcfgChannel = FileChannel.open(syslinuxcfg)) {
-                ByteBuffer syslinuxcfgBuffer = syslinuxcfgChannel.map(READ_ONLY, 0, syslinuxcfgChannel.size());
+            try (FileChannel sysLinuxCfgChannel = FileChannel.open(sysLinuxCfg)) {
+                ByteBuffer sysLinuxCfgBuffer = sysLinuxCfgChannel.map(READ_ONLY, 0, sysLinuxCfgChannel.size());
 
                 fatModifier.addOrReplace(INITRD_GZ, repackedInitrd(fatModifier.getFileContent(INITRD_GZ)));
-                fatModifier.addOrReplace(SYSLINUX_CFG, syslinuxcfgBuffer);
+                fatModifier.addOrReplace(SYSLINUX_CFG, sysLinuxCfgBuffer);
             }
 
             fatModifier.flush();

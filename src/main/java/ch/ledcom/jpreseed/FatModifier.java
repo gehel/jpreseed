@@ -33,8 +33,8 @@ public class FatModifier implements Closeable {
     private final FileSystem fileSystem;
     private final RamDisk ramDisk;
 
-    public FatModifier(Path fsPath) throws IOException {
-        ramDisk = RamDisk.readGzipped(fsPath.toFile());
+    public FatModifier(Path gzippedFat) throws IOException {
+        ramDisk = RamDisk.readGzipped(gzippedFat.toFile());
         this.fileSystem = FileSystemFactory.create(ramDisk, false);
     }
 
@@ -56,8 +56,10 @@ public class FatModifier implements Closeable {
         entry.getFile().write(0, content);
     }
 
-    public final ByteBuffer getByteBuffer() {
-        return ramDisk.getBuffer();
+    public final ByteBuffer getByteBuffer() throws IOException {
+        ByteBuffer buffer = ByteBuffer.allocate((int) ramDisk.getSize());
+        ramDisk.read(0, buffer);
+        return buffer;
     }
 
     @Override

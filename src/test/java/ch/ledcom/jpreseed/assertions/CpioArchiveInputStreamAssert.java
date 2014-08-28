@@ -42,9 +42,9 @@ public class CpioArchiveInputStreamAssert extends AbstractAssert<CpioArchiveInpu
         }
 
         if (nbOfEntriesMatching < 1) {
-            failWithMessage("Expected entry %s was not found in archive.", name);
+            failWithMessage("Expected entry <%s> was not found in archive.", name);
         } else if (nbOfEntriesMatching > 1) {
-            failWithMessage("Expected entry %s was found more than once in archive.", name);
+            failWithMessage("Expected entry <%s> was found more than once in archive.", name);
         }
     }
 }

@@ -24,7 +24,7 @@
     <parent>
         <groupId>ch.ledcom</groupId>
         <artifactId>ledcom-parent-pom</artifactId>
-        <version>1.30</version>
+        <version>1.31</version>
     </parent>
 
     <groupId>ch.ledcom.jpreseed</groupId>
@@ -40,7 +40,7 @@
     <properties>
         <verify.checkstyle.max.violations>19</verify.checkstyle.max.violations>
         <verify.coverage.threshold>95</verify.coverage.threshold>
-        <verify.mutation.threshold>44</verify.mutation.threshold>
+        <verify.mutation.threshold>66</verify.mutation.threshold>
     </properties>
 
     <dependencies>
@@ -110,15 +110,6 @@
                                 <exclude>com/google/common/io/*.class</exclude>
                             </excludes>
                         </instrumentation>
-                    </configuration>
-                </plugin>
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>javancss-maven-plugin</artifactId>
-                    <configuration>
-                        <excludes>
-                            <exclude>ch/ledcom/jpreseed/InitrdRepacker.java</exclude>
-                        </excludes>
                     </configuration>
                 </plugin>
             </plugins>

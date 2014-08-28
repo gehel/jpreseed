@@ -15,18 +15,24 @@
  */
 package ch.ledcom.jpreseed.assertions;
 
-import org.apache.commons.compress.archivers.cpio.CpioArchiveInputStream;
+import org.assertj.core.api.AbstractAssert;
 import org.assertj.core.api.Assertions;
 
+import java.io.IOException;
 import java.nio.ByteBuffer;
 
-public class MyAssertions extends Assertions {
-
-    public static CpioArchiveInputStreamAssert assertThat(CpioArchiveInputStream actual) {
-        return new CpioArchiveInputStreamAssert(actual);
+public class ByteBufferAssert extends AbstractAssert<ByteBufferAssert, ByteBuffer> {
+    protected ByteBufferAssert(ByteBuffer actual) {
+        super(actual, ByteBufferAssert.class);
     }
 
     public static ByteBufferAssert assertThat(ByteBuffer actual) {
         return new ByteBufferAssert(actual);
+    }
+
+    public final void hasContent(String content) throws IOException {
+        isNotNull();
+
+        Assertions.assertThat(new String(actual.array())).isEqualTo(content);
     }
 }
