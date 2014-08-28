@@ -210,7 +210,7 @@ public class ByteBufferDataInputStream extends InputStream implements DataInput 
                     sbuf.append((char) b);
                 }
             }
-        } catch (BufferUnderflowException e) {
+        } catch (BufferUnderflowException ignore) {
             // EOF reached; fall out of loop.
         } catch (RuntimeException e) {
             throw convertException(e);
