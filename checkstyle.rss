@@ -25,8 +25,8 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2014 LedCom</copyright>
     <item>
-      <title>File: 9,
-             Errors: 65,
+      <title>File: 10,
+             Errors: 19,
              Warnings: 0,
              Infos: 0
       </title>
@@ -69,26 +69,26 @@ under the License.
                   0
                 </td>
                 <td>
-                  34
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://gehel.github.com/jpreseed//checkstyle.html#ch.ledcom.jpreseed.JPreseed.java">ch/ledcom/jpreseed/JPreseed.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
+                  7
                 </td>
               </tr>
                           <tr>
                 <td>
                   <a href="http://gehel.github.com/jpreseed//checkstyle.html#ch.ledcom.jpreseed.package-info.java">ch/ledcom/jpreseed/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://gehel.github.com/jpreseed//checkstyle.html#ch.ledcom.jpreseed.JPreseed.java">ch/ledcom/jpreseed/JPreseed.java</a>
                 </td>
                 <td>
                   0
@@ -125,7 +125,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  1
+                  4
                 </td>
               </tr>
                           <tr>
@@ -167,7 +167,21 @@ under the License.
                   0
                 </td>
                 <td>
-                  24
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://gehel.github.com/jpreseed//checkstyle.html#ch.ledcom.jpreseed.FatModifier.java">ch/ledcom/jpreseed/FatModifier.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
                 </td>
               </tr>
                       </tbody>
