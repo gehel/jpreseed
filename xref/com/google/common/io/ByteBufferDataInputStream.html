@@ -218,7 +218,7 @@
 <a class="jxr_linenumber" name="L210" href="#L210">210</a>                     sbuf.append((<strong class="jxr_keyword">char</strong>) b);
 <a class="jxr_linenumber" name="L211" href="#L211">211</a>                 }
 <a class="jxr_linenumber" name="L212" href="#L212">212</a>             }
-<a class="jxr_linenumber" name="L213" href="#L213">213</a>         } <strong class="jxr_keyword">catch</strong> (BufferUnderflowException e) {
+<a class="jxr_linenumber" name="L213" href="#L213">213</a>         } <strong class="jxr_keyword">catch</strong> (BufferUnderflowException ignore) {
 <a class="jxr_linenumber" name="L214" href="#L214">214</a>             <em class="jxr_comment">// EOF reached; fall out of loop.</em>
 <a class="jxr_linenumber" name="L215" href="#L215">215</a>         } <strong class="jxr_keyword">catch</strong> (RuntimeException e) {
 <a class="jxr_linenumber" name="L216" href="#L216">216</a>             <strong class="jxr_keyword">throw</strong> convertException(e);
