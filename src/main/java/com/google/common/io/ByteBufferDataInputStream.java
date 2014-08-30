@@ -15,25 +15,26 @@
  */
 package com.google.common.io;
 
-import java.io.*;
-import java.nio.*;
-import java.nio.channels.*;
+import com.google.common.base.Preconditions;
 
-import com.google.common.base.*;
+import java.io.*;
+import java.nio.BufferUnderflowException;
+import java.nio.ByteBuffer;
+import java.nio.channels.ClosedChannelException;
 
 /**
  * Wrapper from {@link ByteBuffer} to an {@link InputStream} and the
  * {@link DataInput} interface, converting unchecked exceptions from underlying
  * {@link ByteBuffer} calls to appropriate checked {@link IOException}s.
- * <p>
+ * <p/>
  * The byte ordering used depends on the ordering set by
- * {@link ByteBuffer#order(ByteOrder)}. If that is explicitly set to
- * {@link ByteOrder#LITTLE_ENDIAN}, that will be the ordering of returned values
+ * {@link ByteBuffer#order(java.nio.ByteOrder)}. If that is explicitly set to
+ * {@link java.nio.ByteOrder#LITTLE_ENDIAN}, that will be the ordering of returned values
  * spanning more than one byte.
- * <p>
+ * <p/>
  * While useful for typical memory buffers, this may be especially useful for
- * {@link MappedByteBuffer} instances.
- *
+ * {@link java.nio.MappedByteBuffer} instances.
+ * <p/>
  * This class was taken from http://code.google.com/p/guava-libraries/issues/detail?id=592.
  *
  * @author Todd Vierling <tv@duh.org>

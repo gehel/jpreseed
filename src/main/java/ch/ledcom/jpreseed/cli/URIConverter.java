@@ -13,16 +13,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ch.ledcom.jpreseed;
+package ch.ledcom.jpreseed.cli;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import com.beust.jcommander.ParameterException;
+import com.beust.jcommander.converters.BaseConverter;
 
-public class TestFiles {
-    public static final Path HELLO_TXT = Paths.get("src/test/resources/hello.txt");
-    public static final Path HELLO_WORLD_TXT = Paths.get("src/test/resources/hello_world.txt");
-    public static final Path VFAT_IMG_GZ = Paths.get("src/test/resources/vfat.img.gz");
-    public static final Path CACHE_DIRECTORY = Paths.get("target/test-downloads");
-    public static final Path NEW_IMAGE = Paths.get("target/test-vfat.img.gz");
-    public static final Path NON_EXISTING = Paths.get("target/non-existing-path");
+import java.net.URI;
+import java.net.URISyntaxException;
+
+public class URIConverter extends BaseConverter<URI> {
+
+    public URIConverter(String optionName) {
+        super(optionName);
+    }
+
+    @Override
+    public final URI convert(String value) {
+        try {
+            return new URI(value);
+        } catch (URISyntaxException e) {
+            throw new ParameterException(getErrorString(value, "a URI"));
+        }
+    }
 }

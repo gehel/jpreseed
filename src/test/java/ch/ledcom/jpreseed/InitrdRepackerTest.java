@@ -16,10 +16,12 @@
 package ch.ledcom.jpreseed;
 
 import org.apache.commons.compress.archivers.cpio.CpioArchiveInputStream;
-import org.apache.tools.ant.filters.StringInputStream;
 import org.junit.Test;
 
-import java.io.*;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.zip.GZIPInputStream;
 
 import static ch.ledcom.jpreseed.TestFiles.HELLO_TXT;

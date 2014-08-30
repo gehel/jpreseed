@@ -15,11 +15,13 @@
  */
 package com.google.common.io;
 
-import java.io.*;
-import java.nio.*;
-import java.nio.channels.*;
+import com.google.common.base.Preconditions;
 
-import com.google.common.base.*;
+import java.io.*;
+import java.nio.BufferOverflowException;
+import java.nio.ByteBuffer;
+import java.nio.MappedByteBuffer;
+import java.nio.channels.ClosedChannelException;
 
 /**
  * Wrapper from {@link ByteBuffer} to an {@link OutputStream} and the
@@ -27,15 +29,15 @@ import com.google.common.base.*;
  * {@link ByteBuffer} calls to appropriate checked {@link IOException}s. In
  * particular, an overflow of the buffer will result in an {@link EOFException}
  * being thrown (which is not normally thrown by {@link DataOutputStream}).
- * <p>
+ * <p/>
  * The byte ordering used depends on the ordering set by
- * {@link ByteBuffer#order(ByteOrder)}. If that is explicitly set to
- * {@link ByteOrder#LITTLE_ENDIAN}, that will be the ordering of written values
+ * {@link ByteBuffer#order(java.nio.ByteOrder)}. If that is explicitly set to
+ * {@link java.nio.ByteOrder#LITTLE_ENDIAN}, that will be the ordering of written values
  * spanning more than one byte.
- * <p>
+ * <p/>
  * While useful for typical memory buffers, this may be especially useful for
  * {@link MappedByteBuffer} instances.
- *
+ * <p/>
  * This class was taken from http://code.google.com/p/guava-libraries/issues/detail?id=592.
  *
  * @author Todd Vierling <tv@duh.org>

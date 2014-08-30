@@ -16,10 +16,8 @@
 package ch.ledcom.jpreseed.assertions;
 
 import org.assertj.core.api.AbstractAssert;
-import org.assertj.core.api.Assertions;
 
 import java.io.IOException;
-import java.nio.ByteBuffer;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
@@ -37,6 +35,14 @@ public class PathAssert extends AbstractAssert<PathAssert, Path> {
 
         if (!Files.exists(actual)) {
             failWithMessage("File <%s> does not exist.", actual);
+        }
+    }
+
+    public final void doesNotExist() throws IOException {
+        isNotNull();
+
+        if (Files.exists(actual)) {
+            failWithMessage("File <%s> exists.", actual);
         }
     }
 }

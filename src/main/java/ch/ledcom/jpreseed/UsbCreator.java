@@ -24,7 +24,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.ByteBuffer;
 import java.nio.file.Path;
-import java.util.Set;
+import java.util.Collection;
 import java.util.zip.GZIPOutputStream;
 
 import static com.google.common.collect.ImmutableSet.copyOf;
@@ -38,7 +38,7 @@ public class UsbCreator {
     private final ByteBuffer sysLinuxCfg;
     private final ImmutableSet<Path> preseedFiles;
 
-    public UsbCreator(InputStream srcBootImgGz, GZIPOutputStream targetBootImg, ByteBuffer sysLinuxCfg, Set<Path> preseedFiles) {
+    public UsbCreator(InputStream srcBootImgGz, GZIPOutputStream targetBootImg, ByteBuffer sysLinuxCfg, Collection<Path> preseedFiles) {
         this.srcBootImgGz = srcBootImgGz;
         this.targetBootImg = targetBootImg;
         this.sysLinuxCfg = sysLinuxCfg;

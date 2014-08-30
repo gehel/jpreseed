@@ -15,15 +15,16 @@
  */
 package ch.ledcom.jpreseed;
 
+import ch.ledcom.jpreseed.cli.JPreseedArguments;
+import com.beust.jcommander.JCommander;
+
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.ByteBuffer;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Collections;
 import java.util.zip.GZIPOutputStream;
 
 public class JPreseed {
@@ -37,23 +38,37 @@ public class JPreseed {
         downloader = new CachedDownloader(new CacheNaming(cacheDirectory));
     }
 
-    public final void create(URI imageUrl) throws IOException {
+    public final void create(JPreseedArguments arguments) throws IOException {
         try (
-                InputStream image = Files.newInputStream(downloader.download(imageUrl));
-                GZIPOutputStream newImage = new GZIPOutputStream(Files.newOutputStream(Paths.get("boot.img")))) {
-            ByteBuffer sysConfigCfg = ByteBuffer.allocate(0);
+                InputStream image = Files.newInputStream(getSourceImage(arguments));
+                GZIPOutputStream newImage = new GZIPOutputStream(Files.newOutputStream(arguments.getTargetImage()))) {
+            ByteBuffer sysConfigCfg = ByteBuffer.wrap(Files.readAllBytes(arguments.getSysConfigFile()));
             new UsbCreator(
                     image,
                     newImage,
                     sysConfigCfg,
-                    Collections.<Path>emptySet()
+                    arguments.getPreseeds()
             ).create();
         }
     }
 
+    private Path getSourceImage(JPreseedArguments arguments) throws IOException {
+        if (arguments.getSourceUrl() != null) {
+            return downloader.download(arguments.getSourceUrl());
+        } else {
+            return arguments.getSourceFile();
+        }
+    }
+
     public static void main(String[] args) throws URISyntaxException, IOException {
-        URI imageUrl = new URI("http://archive.ubuntu.com/ubuntu/dists/trusty-updates/main/installer-amd64/current/images/netboot/boot.img.gz");
-        new JPreseed().create(imageUrl);
+        JPreseedArguments arguments = new JPreseedArguments();
+        JCommander jCommander = new JCommander(arguments, args);
+        arguments.validate();
+        if (arguments.isHelp()) {
+            jCommander.usage();
+            System.exit(0);
+        }
+        new JPreseed().create(arguments);
     }
 
 }

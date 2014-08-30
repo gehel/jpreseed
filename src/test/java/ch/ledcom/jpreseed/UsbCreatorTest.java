@@ -15,13 +15,11 @@
  */
 package ch.ledcom.jpreseed;
 
-import ch.ledcom.jpreseed.assertions.MyAssertions;
 import com.google.common.io.ByteBufferDataInputStream;
 import de.waldheinz.fs.FileSystem;
 import de.waldheinz.fs.FileSystemFactory;
 import de.waldheinz.fs.FsDirectoryEntry;
 import de.waldheinz.fs.FsFile;
-import de.waldheinz.fs.util.FileDisk;
 import de.waldheinz.fs.util.RamDisk;
 import org.apache.commons.compress.archivers.cpio.CpioArchiveInputStream;
 import org.junit.After;
@@ -30,7 +28,6 @@ import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.nio.ByteBuffer;
 import java.nio.file.Files;
 import java.nio.file.Path;
