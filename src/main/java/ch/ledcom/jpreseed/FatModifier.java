@@ -22,9 +22,10 @@ import de.waldheinz.fs.FsFile;
 import de.waldheinz.fs.util.RamDisk;
 
 import java.io.Closeable;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.ByteBuffer;
-import java.nio.file.Path;
 
 import static java.lang.String.format;
 
@@ -33,13 +34,20 @@ public class FatModifier implements Closeable {
     private final FileSystem fileSystem;
     private final RamDisk ramDisk;
 
-    public FatModifier(Path gzippedFat) throws IOException {
-        ramDisk = RamDisk.readGzipped(gzippedFat.toFile());
+    public FatModifier(InputStream gzippedFat) throws IOException {
+        ramDisk = RamDisk.readGzipped(gzippedFat);
         this.fileSystem = FileSystemFactory.create(ramDisk, false);
     }
 
     public final ByteBuffer getFileContent(String fileName) throws IOException {
-        FsFile file = fileSystem.getRoot().getEntry(fileName).getFile();
+        FsDirectoryEntry entry = fileSystem.getRoot().getEntry(fileName);
+        if (entry == null) {
+            throw new FileNotFoundException(fileName);
+        }
+        if (!entry.isFile()) {
+            throw new IOException(String.format("Can only get content of files and [%s] is not a file.", fileName));
+        }
+        FsFile file = entry.getFile();
         ByteBuffer buffer = ByteBuffer.allocate((int) file.getLength());
         file.read(0, buffer);
         return buffer;

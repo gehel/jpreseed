@@ -16,11 +16,15 @@
 package ch.ledcom.jpreseed;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.nio.ByteBuffer;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Collections;
+import java.util.zip.GZIPOutputStream;
 
 public class JPreseed {
 
@@ -34,12 +38,17 @@ public class JPreseed {
     }
 
     public final void create(URI imageUrl) throws IOException {
-        new UsbCreator(
-                downloader.download(imageUrl),
-                Paths.get("boot.img"),
-                Paths.get("syslinux.cfg"),
-                Collections.<Path>emptySet()
-        ).create();
+        try (
+                InputStream image = Files.newInputStream(downloader.download(imageUrl));
+                GZIPOutputStream newImage = new GZIPOutputStream(Files.newOutputStream(Paths.get("boot.img")))) {
+            ByteBuffer sysConfigCfg = ByteBuffer.allocate(0);
+            new UsbCreator(
+                    image,
+                    newImage,
+                    sysConfigCfg,
+                    Collections.<Path>emptySet()
+            ).create();
+        }
     }
 
     public static void main(String[] args) throws URISyntaxException, IOException {

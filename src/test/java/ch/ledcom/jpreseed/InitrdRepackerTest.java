@@ -16,67 +16,58 @@
 package ch.ledcom.jpreseed;
 
 import org.apache.commons.compress.archivers.cpio.CpioArchiveInputStream;
-import org.junit.After;
-import org.junit.Before;
+import org.apache.tools.ant.filters.StringInputStream;
 import org.junit.Test;
 
 import java.io.*;
 import java.util.zip.GZIPInputStream;
 
+import static ch.ledcom.jpreseed.TestFiles.HELLO_TXT;
+import static ch.ledcom.jpreseed.TestFiles.HELLO_WORLD_TXT;
 import static ch.ledcom.jpreseed.assertions.MyAssertions.assertThat;
-import static java.util.Collections.singleton;
 
 public class InitrdRepackerTest {
-
-    private final File repackedArchiveFile = new File("cpio-repacked.gz");
 
     @Test
     public final void repackWithoutAdditionalFiles() throws IOException {
         try (
                 InputStream initrdGz = InitrdRepackerTest.class.getResourceAsStream("/cpio-test-archive.gz");
-                FileOutputStream out = new FileOutputStream(repackedArchiveFile)) {
+                ByteArrayOutputStream out = new ByteArrayOutputStream()) {
             new InitrdRepacker(initrdGz).repack(out);
-        }
 
-        assertThat(gzippedCpio(repackedArchiveFile)).hasSingleEntry("hello.txt");
+            assertThat(gzippedCpio(out)).hasSingleEntry("hello.txt");
+        }
     }
 
     @Test
     public final void addedFileIsPresentInArchive() throws IOException {
         try (
                 InputStream initrdGz = InitrdRepackerTest.class.getResourceAsStream("/cpio-test-archive.gz");
-                FileOutputStream out = new FileOutputStream(repackedArchiveFile)) {
-            File fileToAdd = new File("src/test/resources/hello_world.txt");
+                ByteArrayOutputStream out = new ByteArrayOutputStream()) {
             new InitrdRepacker(initrdGz)
-                    .addFiles(singleton(fileToAdd))
+                    .addFile("hello_world.txt", HELLO_WORLD_TXT.toFile())
                     .repack(out);
-        }
 
-        assertThat(gzippedCpio(repackedArchiveFile)).hasSingleEntry("hello_world.txt");
+            assertThat(gzippedCpio(out)).hasSingleEntry("hello_world.txt");
+        }
     }
 
     @Test
     public final void addingExistingFileDoesNotCreateDuplicateEntries() throws IOException {
         try (
                 InputStream initrdGz = InitrdRepackerTest.class.getResourceAsStream("/cpio-test-archive.gz");
-                FileOutputStream out = new FileOutputStream(repackedArchiveFile)) {
-            File fileToAdd = new File("src/test/resources/hello.txt");
+                ByteArrayOutputStream out = new ByteArrayOutputStream()) {
             new InitrdRepacker(initrdGz)
-                    .addFiles(singleton(fileToAdd))
+                    .addFile("hello.txt", HELLO_TXT.toFile())
                     .repack(out);
+
+
+            assertThat(gzippedCpio(out)).hasSingleEntry("hello.txt");
         }
-
-        assertThat(gzippedCpio(repackedArchiveFile)).hasSingleEntry("hello.txt");
     }
 
-    @Before
-    @After
-    public final void removedRepackedArchive() {
-        repackedArchiveFile.delete();
-    }
-
-    private static CpioArchiveInputStream gzippedCpio(File file) throws IOException {
-        return new CpioArchiveInputStream(new GZIPInputStream(new FileInputStream(file)));
+    private static CpioArchiveInputStream gzippedCpio(ByteArrayOutputStream stream) throws IOException {
+        return new CpioArchiveInputStream(new GZIPInputStream(new ByteArrayInputStream(stream.toByteArray())));
     }
 
 }

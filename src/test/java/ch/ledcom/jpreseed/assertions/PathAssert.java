@@ -15,28 +15,28 @@
  */
 package ch.ledcom.jpreseed.assertions;
 
-import de.waldheinz.fs.FsDirectoryEntry;
-import org.apache.commons.compress.archivers.cpio.CpioArchiveInputStream;
+import org.assertj.core.api.AbstractAssert;
 import org.assertj.core.api.Assertions;
 
+import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.nio.file.Files;
 import java.nio.file.Path;
 
-public class MyAssertions extends Assertions {
-
-    public static CpioArchiveInputStreamAssert assertThat(CpioArchiveInputStream actual) {
-        return new CpioArchiveInputStreamAssert(actual);
-    }
-
-    public static ByteBufferAssert assertThat(ByteBuffer actual) {
-        return new ByteBufferAssert(actual);
+public class PathAssert extends AbstractAssert<PathAssert, Path> {
+    protected PathAssert(Path actual) {
+        super(actual, PathAssert.class);
     }
 
     public static PathAssert assertThat(Path actual) {
         return new PathAssert(actual);
     }
 
-    public static FsDirectoryEntryAssert assertThat(FsDirectoryEntry actual) {
-        return new FsDirectoryEntryAssert(actual);
+    public final void exists() throws IOException {
+        isNotNull();
+
+        if (!Files.exists(actual)) {
+            failWithMessage("File <%s> does not exist.", actual);
+        }
     }
 }

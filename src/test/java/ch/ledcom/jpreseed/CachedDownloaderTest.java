@@ -28,8 +28,8 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 
+import static ch.ledcom.jpreseed.TestFiles.CACHE_DIRECTORY;
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -38,7 +38,6 @@ public class CachedDownloaderTest {
     private static final String TEST_FILENAME = "/test.txt";
     private static final String URL_UNDER_TEST = "http://localhost:" + HTTP_PORT + TEST_FILENAME;
     private static final String FILE_CONTENT = "Hello world !";
-    private static final Path CACHE_DIRECTORY = Paths.get("target/test-downloads");
 
     @Rule
     @VisibleForTesting

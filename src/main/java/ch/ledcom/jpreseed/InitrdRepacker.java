@@ -15,22 +15,19 @@
  */
 package ch.ledcom.jpreseed;
 
-import com.google.common.base.Function;
+import org.apache.commons.compress.archivers.ArchiveEntry;
 import org.apache.commons.compress.archivers.cpio.CpioArchiveEntry;
 import org.apache.commons.compress.archivers.cpio.CpioArchiveInputStream;
 import org.apache.commons.compress.archivers.cpio.CpioArchiveOutputStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import javax.annotation.Nonnull;
 import java.io.*;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
-import static com.google.common.collect.Collections2.transform;
 import static com.google.common.io.ByteStreams.copy;
 
 /**
@@ -44,15 +41,15 @@ public class InitrdRepacker {
 
     private final InputStream initrdGz;
 
-    private final Set<File> additionalFiles = new HashSet<>();
-    private final ToName toName = new ToName();
+    private final Map<String, File> additionalFiles = new HashMap<>();
 
     public InitrdRepacker(InputStream initrdGz) {
         this.initrdGz = initrdGz;
     }
 
-    public final InitrdRepacker addFiles(Collection<File> files) {
-        additionalFiles.addAll(files);
+
+    public final InitrdRepacker addFile(String name, File content) {
+        additionalFiles.put(name, content);
         return this;
     }
 
@@ -65,7 +62,7 @@ public class InitrdRepacker {
 
             // add files from base archive
             while ((cpioEntry = cpioIn.getNextCPIOEntry()) != null) {
-                if (!transform(additionalFiles, toName).contains(cpioEntry.getName())) {
+                if (!additionalFiles.keySet().contains(cpioEntry.getName())) {
                     logger.info("Repacking [{}]", cpioEntry.getName());
                     cpioOut.putArchiveEntry(cpioEntry);
                     long bytesCopied = copy(cpioIn, cpioOut);
@@ -75,22 +72,15 @@ public class InitrdRepacker {
             }
 
             // additional files
-            for (File file : additionalFiles) {
-                logger.info("Packing new file [{}]", file.getName());
-                cpioOut.putArchiveEntry(new CpioArchiveEntry(file, file.getName()));
-                try (InputStream in = new FileInputStream(file)) {
+            for (Map.Entry<String, File> entry : additionalFiles.entrySet()) {
+                logger.info("Packing new file [{}]", entry.getKey());
+                ArchiveEntry additionalEntry = cpioOut.createArchiveEntry(entry.getValue(), entry.getKey());
+                cpioOut.putArchiveEntry(additionalEntry);
+                try (InputStream in = new FileInputStream(entry.getValue())) {
                     copy(in, cpioOut);
                 }
                 cpioOut.closeArchiveEntry();
             }
-        }
-    }
-
-    private static class ToName implements Function<File, String> {
-        @Nonnull
-        @Override
-        public String apply(@Nonnull File input) {
-            return input.getName();
         }
     }
 }

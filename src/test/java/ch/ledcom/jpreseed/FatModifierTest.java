@@ -23,10 +23,14 @@ import de.waldheinz.fs.util.RamDisk;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.ByteBuffer;
+import java.nio.file.Files;
 import java.nio.file.Paths;
 
+import static ch.ledcom.jpreseed.TestFiles.VFAT_IMG_GZ;
 import static ch.ledcom.jpreseed.assertions.MyAssertions.assertThat;
 
 public class FatModifierTest {
@@ -35,12 +39,24 @@ public class FatModifierTest {
 
     @Before
     public final void initFatModifier() throws IOException {
-        fatModifier = new FatModifier(Paths.get("src/test/resources/vfat.img.gz"));
+        try (InputStream in = Files.newInputStream(VFAT_IMG_GZ)) {
+            fatModifier = new FatModifier(in);
+        }
     }
 
     @Test
     public final void existingFileCanBeFound() throws IOException {
         assertThat(fatModifier.getFileContent("hello.txt")).hasContent("hello\n");
+    }
+
+    @Test(expected = FileNotFoundException.class)
+    public final void nonExistingFileCannotBeFound() throws IOException {
+        fatModifier.getFileContent("nonexisting.txt");
+    }
+
+    @Test(expected = IOException.class)
+    public final void cannotGetContentOfDirectory() throws IOException {
+        fatModifier.getFileContent("my_dir");
     }
 
     @Test
