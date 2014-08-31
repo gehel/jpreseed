@@ -88,9 +88,9 @@
                             <branchRate>0</branchRate>
                             <lineRate>0</lineRate>
                             <totalBranchRate>37</totalBranchRate>
-                            <totalLineRate>52</totalLineRate>
+                            <totalLineRate>50</totalLineRate>
                             <packageBranchRate>37</packageBranchRate>
-                            <packageLineRate>52</packageLineRate>
+                            <packageLineRate>50</packageLineRate>
                         </check>
                     </configuration>
                 </plugin>
