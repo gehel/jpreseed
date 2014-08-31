@@ -10,6 +10,9 @@ branches:
   except:
     - travis
     - gh-pages
+cache:
+  directories:
+  - $HOME/.m2
 env:
   global:
     - secure: "FE0dNQmTW1IAxLCcJucCUzsz0rxqNJWGRmOKCAX6SiusEVqJ4c4GboKsPyASFKrAO79hfJnAtkCqPqJYekedDQ9hw9eAwK5VdY68A8uD8TTAlXC8D6GOXGwzfUMk9C1md2dfjOoGBGFv+/kHjlL4sfRKIwmb4ZdFY6G4pXZPf7c="
