@@ -55,7 +55,12 @@ public class FatModifierTest {
 
     @Test(expected = IOException.class)
     public final void cannotGetContentOfDirectory() throws IOException {
-        fatModifier.getFileContent("my_dir");
+        try {
+            fatModifier.getFileContent("my_dir");
+        } catch (IOException ioe) {
+            assertThat(ioe.getMessage()).contains("my_dir");
+            throw ioe;
+        }
     }
 
     @Test

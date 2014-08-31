@@ -63,11 +63,11 @@ public class JPreseed {
     public static void main(String[] args) throws URISyntaxException, IOException {
         JPreseedArguments arguments = new JPreseedArguments();
         JCommander jCommander = new JCommander(arguments, args);
-        arguments.validate();
         if (arguments.isHelp()) {
             jCommander.usage();
             System.exit(0);
         }
+        arguments.validate();
         new JPreseed().create(arguments);
     }
 

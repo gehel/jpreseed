@@ -54,20 +54,23 @@ public class JPreseedArguments {
             names = TARGET_FILE,
             description = "Where to create the new repackaged image",
             converter = PathConverter.class,
-            validateValueWith = NonExistingPathValidator.class)
+            validateValueWith = NonExistingPathValidator.class,
+            required = true)
     private Path targetImage;
 
     @Parameter(
             names = SYSCONFIG_FILE,
             description = "the sysconfig file to repackage in the new image",
             converter = PathConverter.class,
-            validateValueWith = ExistingPathValidator.class)
+            validateValueWith = ExistingPathValidator.class,
+            required = true)
     private Path sysConfigFile;
 
     @Parameter(
             names = PRESEEDS,
             description = "Your custom preseed files",
-            variableArity = true)
+            variableArity = true,
+            required = true)
     private List<String> preseeds;
 
     @Parameter(names = HELP, help = true)
