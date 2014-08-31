@@ -34,28 +34,32 @@ import static ch.ledcom.jpreseed.assertions.MyAssertions.assertThat;
 
 public class FatModifierTest {
 
-    private FatModifier fatModifier;
-
-    @Before
-    public final void initFatModifier() throws IOException {
+    public final FatModifier initFatModifier() throws IOException {
         try (InputStream in = Files.newInputStream(VFAT_IMG_GZ)) {
-            fatModifier = new FatModifier(in);
+            return new FatModifier(in);
         }
     }
 
     @Test
     public final void existingFileCanBeFound() throws IOException {
-        assertThat(fatModifier.getFileContent("hello.txt")).hasContent("hello\n");
+        FatModifier modifier;
+        try (FatModifier fatModifier = initFatModifier()) {
+            modifier = fatModifier;
+            assertThat(fatModifier.getFileContent("hello.txt")).hasContent("hello\n");
+        }
+        assertThat(modifier.isClosed()).isTrue();
     }
 
     @Test(expected = FileNotFoundException.class)
     public final void nonExistingFileCannotBeFound() throws IOException {
-        fatModifier.getFileContent("nonexisting.txt");
+        try (FatModifier fatModifier = initFatModifier()) {
+            fatModifier.getFileContent("nonexisting.txt");
+        }
     }
 
     @Test(expected = IOException.class)
     public final void cannotGetContentOfDirectory() throws IOException {
-        try {
+        try (FatModifier fatModifier = initFatModifier()) {
             fatModifier.getFileContent("my_dir");
         } catch (IOException ioe) {
             assertThat(ioe.getMessage()).contains("my_dir");
@@ -65,41 +69,45 @@ public class FatModifierTest {
 
     @Test
     public final void newFileCanBeAdded() throws IOException {
-        ByteBuffer newContent = ByteBuffer.wrap("new content".getBytes());
+        try (FatModifier fatModifier = initFatModifier()) {
+            ByteBuffer newContent = ByteBuffer.wrap("new content".getBytes());
 
-        fatModifier.addOrReplace("new_content.txt", newContent);
-        fatModifier.flush();
-        fatModifier.close();
+            fatModifier.addOrReplace("new_content.txt", newContent);
+            fatModifier.flush();
+            fatModifier.close();
 
-        ByteBuffer fatBuffer = fatModifier.getByteBuffer();
+            ByteBuffer fatBuffer = fatModifier.getByteBuffer();
 
-        FileSystem fs = createFileSystem(fatBuffer);
+            FileSystem fs = createFileSystem(fatBuffer);
 
-        assertThat(getFileContent(fs, "new_content.txt")).hasContent("new content");
+            assertThat(getFileContent(fs, "new_content.txt")).hasContent("new content");
+        }
     }
 
     @Test
     public final void existingFileCanBeModified() throws IOException {
-        ByteBuffer newContent = ByteBuffer.wrap("new content".getBytes());
+        try (FatModifier fatModifier = initFatModifier()) {
+            ByteBuffer newContent = ByteBuffer.wrap("new content".getBytes());
 
-        assertThat(fatModifier.getFileContent("hello.txt")).hasContent("hello\n");
+            assertThat(fatModifier.getFileContent("hello.txt")).hasContent("hello\n");
 
-        fatModifier.addOrReplace("hello.txt", newContent);
-        fatModifier.flush();
-        fatModifier.close();
+            fatModifier.addOrReplace("hello.txt", newContent);
+            fatModifier.flush();
+            fatModifier.close();
 
-        ByteBuffer fatBuffer = fatModifier.getByteBuffer();
+            ByteBuffer fatBuffer = fatModifier.getByteBuffer();
 
-        FileSystem fs = createFileSystem(fatBuffer);
+            FileSystem fs = createFileSystem(fatBuffer);
 
-        assertThat(getFileContent(fs, "hello.txt")).hasContent("new content");
+            assertThat(getFileContent(fs, "hello.txt")).hasContent("new content");
+        }
     }
 
     @Test(expected = IllegalStateException.class)
     public final void replacingDirectoryWithFileIsNotPossible() throws IOException {
         ByteBuffer newContent = ByteBuffer.wrap("new content".getBytes());
 
-        try {
+        try (FatModifier fatModifier = initFatModifier()) {
             fatModifier.addOrReplace("my_dir", newContent);
         } catch (IllegalStateException ise) {
             assertThat(ise.getMessage()).contains("my_dir");

@@ -75,6 +75,10 @@ public class FatModifier implements Closeable {
         fileSystem.close();
     }
 
+    public final boolean isClosed() {
+        return fileSystem.isClosed();
+    }
+
     public final void flush() throws IOException {
         fileSystem.flush();
     }
