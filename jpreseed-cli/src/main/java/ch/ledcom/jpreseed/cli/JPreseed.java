@@ -20,6 +20,8 @@ import ch.ledcom.jpreseed.CachedDownloader;
 import ch.ledcom.jpreseed.UsbCreator;
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.ParameterException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -33,6 +35,9 @@ import java.util.zip.GZIPOutputStream;
 public class JPreseed {
 
     public static final String JPRESEED_DIR = ".jpreseed";
+
+    private final Logger logger = LoggerFactory.getLogger(getClass());
+
     private final CachedDownloader downloader;
 
     public JPreseed() {
@@ -57,6 +62,7 @@ public class JPreseed {
 
     private Path getSourceImage(JPreseedArguments arguments) throws IOException {
         if (arguments.getSourceUrl() != null) {
+            logger.info("Downloading image from [{}]", arguments.getSourceUrl());
             return downloader.download(arguments.getSourceUrl());
         } else {
             return arguments.getSourceFile();
