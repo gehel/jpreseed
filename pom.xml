@@ -24,7 +24,7 @@
     <parent>
         <groupId>ch.ledcom</groupId>
         <artifactId>ledcom-parent-pom</artifactId>
-        <version>1.32</version>
+        <version>1.33</version>
     </parent>
 
     <groupId>ch.ledcom.jpreseed</groupId>
@@ -35,6 +35,7 @@
     <modules>
         <module>jpreseed-cli</module>
         <module>jpreseed-core</module>
+        <module>jpreseed-web</module>
     </modules>
 
     <name>JPreseed</name>
@@ -46,6 +47,7 @@
         <verify.checkstyle.max.violations>18</verify.checkstyle.max.violations>
         <verify.coverage.threshold>100</verify.coverage.threshold>
         <verify.mutation.threshold>100</verify.mutation.threshold>
+        <spring.boot.version>1.1.6.RELEASE</spring.boot.version>
     </properties>
 
     <dependencyManagement>
@@ -61,10 +63,12 @@
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>ch.ledcom.assertj-extensions</groupId>
-                <artifactId>assertj-extensions</artifactId>
-                <scope>test</scope>
-                <version>1.0</version>
+                <!-- Import dependency management from Spring Boot -->
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>de.waldheinz</groupId>
@@ -72,9 +76,14 @@
                 <version>0.6.5</version>
             </dependency>
             <dependency>
-                <groupId>com.github.axet</groupId>
-                <artifactId>wget</artifactId>
-                <version>1.2.11</version>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>4.4-alpha1</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient-cache</artifactId>
+                <version>4.4-alpha1</version>
             </dependency>
             <dependency>
                 <groupId>com.github.stephenc.java-iso-tools</groupId>
@@ -92,9 +101,28 @@
                 <version>1.35</version>
             </dependency>
             <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>log4j-over-slf4j</artifactId>
-                <version>1.7.7</version>
+                <groupId>org.yaml</groupId>
+                <artifactId>snakeyaml</artifactId>
+                <version>1.14</version>
+            </dependency>
+
+            <!-- WebJars -->
+            <dependency>
+                <groupId>org.webjars</groupId>
+                <artifactId>bootstrap</artifactId>
+                <version>3.2.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.webjars</groupId>
+                <artifactId>jquery</artifactId>
+                <version>2.1.1</version>
+            </dependency>
+
+            <!-- test -->
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-core</artifactId>
+                <version>1.9.5</version>
             </dependency>
             <dependency>
                 <groupId>com.github.tomakehurst</groupId>
@@ -103,6 +131,18 @@
                 <!-- Include this if you have dependency conflicts for Guava, Jetty, Jackson or Apache HTTP Client -->
                 <classifier>standalone</classifier>
                 <scope>test</scope>
+            </dependency>
+            <dependency>
+                <!-- wire mock uses log4j -->
+                <groupId>org.slf4j</groupId>
+                <artifactId>log4j-over-slf4j</artifactId>
+                <version>1.7.7</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.ledcom.assertj-extensions</groupId>
+                <artifactId>assertj-extensions</artifactId>
+                <scope>test</scope>
+                <version>1.1</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

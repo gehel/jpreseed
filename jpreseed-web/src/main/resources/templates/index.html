@@ -1,0 +1,71 @@
+<!--
+
+    Copyright (C) 2014 LedCom (guillaume.lederrey@gmail.com)
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+            http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Preseed image creator</title>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.2.0/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.2.0/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen"/>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Preseed image creator</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <ul th:each="distro : ${distributions}">
+                <li th:text="${distro.name}"></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <form method="post" enctype="multipart/form-data" role="form">
+                <div class="form-group">
+                    <label for="imageUrl">image URL</label>
+                    <input id="imageUrl" name="imageUrl" type="url"/>
+                </div>
+                <div class="form-group">
+                    <label for="preseeds">preseeds</label>
+                    <input id="preseeds" name="preseeds" type="file" multiple="multiple"/>
+                </div>
+                <div class="form-group">
+                    <label for="syslinux">syslinux</label>
+                    <input id="syslinux" name="syslinux" type="file"/>
+                </div>
+                <input type="submit" value="GO"/>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="http://cdn.jsdelivr.net/webjars/jquery/2.1.1/jquery.min.js"
+        th:src="@{/webjars/jquery/2.1.1/jquery.min.js}"></script>
+<script src="http://cdn.jsdelivr.net/webjars/bootstrap/3.2.0/js/bootstrap.min.js"
+        th:src="@{/webjars/bootstrap/3.2.0/js/bootstrap.min.js}"></script>
+</body>
+</html>

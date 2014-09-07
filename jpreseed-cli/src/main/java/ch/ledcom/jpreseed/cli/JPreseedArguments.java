@@ -46,7 +46,7 @@ public class JPreseedArguments {
 
     @Parameter(
             names = SOURCE_URL,
-            description = "URL at which to download the source image",
+            description = "URL at which to getContent the source image",
             converter = URIConverter.class)
     private URI sourceUrl;
 

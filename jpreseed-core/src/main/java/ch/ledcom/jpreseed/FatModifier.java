@@ -45,7 +45,7 @@ public class FatModifier implements Closeable {
             throw new FileNotFoundException(fileName);
         }
         if (!entry.isFile()) {
-            throw new IOException(String.format("Can only get content of files and [%s] is not a file.", fileName));
+            throw new IOException(String.format("Can only get getContent of files and [%s] is not a file.", fileName));
         }
         FsFile file = entry.getFile();
         ByteBuffer buffer = ByteBuffer.allocate((int) file.getLength());

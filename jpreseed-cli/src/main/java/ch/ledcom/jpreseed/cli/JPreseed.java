@@ -15,44 +15,54 @@
  */
 package ch.ledcom.jpreseed.cli;
 
-import ch.ledcom.jpreseed.CacheNaming;
-import ch.ledcom.jpreseed.CachedDownloader;
-import ch.ledcom.jpreseed.UsbCreator;
+import ch.ledcom.jpreseed.*;
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.ParameterException;
+import org.apache.http.client.config.RequestConfig;
+import org.apache.http.impl.client.cache.CacheConfig;
+import org.apache.http.impl.client.cache.CachingHttpClients;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.nio.ByteBuffer;
 import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.zip.GZIPOutputStream;
 
 public class JPreseed {
 
-    public static final String JPRESEED_DIR = ".jpreseed";
-
+    private static final int MAX_CACHE_ENTRIES = 20;
+    private static final int MAX_OBJECT_SIZE = 100 * 1024 * 1024;
+    private static final int CONNECT_TIMEOUT = 1000;
+    private static final int SOCKET_TIMEOUT = 1000;
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
-    private final CachedDownloader downloader;
+    private final DownloaderFactory downloaderFactory;
 
     public JPreseed() {
-        String homeDir = System.getProperty("user.home");
-        Path cacheDirectory = Paths.get(homeDir, JPRESEED_DIR, "cache");
-        downloader = new CachedDownloader(new CacheNaming(cacheDirectory));
+        CacheConfig cacheConfig = CacheConfig.custom()
+                .setMaxCacheEntries(MAX_CACHE_ENTRIES)
+                .setMaxObjectSize(MAX_OBJECT_SIZE)
+                .build();
+        RequestConfig requestConfig = RequestConfig.custom()
+                .setConnectTimeout(CONNECT_TIMEOUT)
+                .setSocketTimeout(SOCKET_TIMEOUT)
+                .build();
+
+        downloaderFactory = new DownloaderFactory(CachingHttpClients.custom()
+                .setCacheConfig(cacheConfig)
+                .setDefaultRequestConfig(requestConfig)
+                .build());
     }
 
     public final void create(JPreseedArguments arguments) throws IOException {
         try (
-                InputStream image = Files.newInputStream(getSourceImage(arguments));
+                InputImage image = getSourceImage(arguments);
                 GZIPOutputStream newImage = new GZIPOutputStream(Files.newOutputStream(arguments.getTargetImage()))) {
             ByteBuffer sysConfigCfg = ByteBuffer.wrap(Files.readAllBytes(arguments.getSysConfigFile()));
             new UsbCreator(
-                    image,
+                    image.getContent(),
                     newImage,
                     sysConfigCfg,
                     arguments.getPreseeds()
@@ -60,12 +70,12 @@ public class JPreseed {
         }
     }
 
-    private Path getSourceImage(JPreseedArguments arguments) throws IOException {
+    private InputImage getSourceImage(final JPreseedArguments arguments) throws IOException {
         if (arguments.getSourceUrl() != null) {
             logger.info("Downloading image from [{}]", arguments.getSourceUrl());
-            return downloader.download(arguments.getSourceUrl());
+            return new DownloadedInputImage(downloaderFactory.getDownloader(arguments.getSourceUrl()));
         } else {
-            return arguments.getSourceFile();
+            return new InputStreamImage(Files.newInputStream(arguments.getSourceFile()));
         }
     }
 

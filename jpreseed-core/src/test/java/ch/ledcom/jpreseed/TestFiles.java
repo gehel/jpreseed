@@ -15,6 +15,8 @@
  */
 package ch.ledcom.jpreseed;
 
+import java.io.File;
+import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -22,7 +24,15 @@ public class TestFiles {
     public static final Path HELLO_TXT = Paths.get("src/test/resources/hello.txt");
     public static final Path HELLO_WORLD_TXT = Paths.get("src/test/resources/hello_world.txt");
     public static final Path VFAT_IMG_GZ = Paths.get("src/test/resources/vfat.img.gz");
-    public static final Path CACHE_DIRECTORY = Paths.get("target/test-downloads");
     public static final Path NEW_IMAGE = Paths.get("target/test-vfat.img.gz");
-    public static final Path NON_EXISTING = Paths.get("target/non-existing-path");
+
+    public static File helloTxtFile() {
+        URL resource = TestFiles.class.getResource("/hello.txt");
+        return new File(resource.getFile());
+    }
+
+    public static Path helloTxtPath() {
+        return helloTxtFile().toPath();
+    }
+
 }

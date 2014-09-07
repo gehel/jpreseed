@@ -1,0 +1,22 @@
+Ubuntu:
+  Trusty Tahr:
+    shortName : 'trusty'
+    number    : '14.04'
+    isoImage  : 'http://archive.ubuntu.com/ubuntu/dists/trusty-updates/main/installer-amd64/current/images/netboot/mini.iso'
+    usbImage  : 'http://archive.ubuntu.com/ubuntu/dists/trusty-updates/main/installer-amd64/current/images/netboot/boot.img.gz'
+  Saucy Salamander:
+    shortName : 'saucy'
+    number    : '13.10'
+    isoImage  : 'http://archive.ubuntu.com/ubuntu/dists/saucy-updates/main/installer-amd64/current/images/netboot/mini.iso'
+    usbImage  : 'http://archive.ubuntu.com/ubuntu/dists/saucy-updates/main/installer-amd64/current/images/netboot/boot.img.gz'
+  Raring Ringtail:
+    shortName : 'raring'
+    number    : '13.04'
+    isoImage  : 'http://archive.ubuntu.com/ubuntu/dists/raring-updates/main/installer-amd64/current/images/netboot/mini.iso'
+    usbImage  : 'http://archive.ubuntu.com/ubuntu/dists/raring-updates/main/installer-amd64/current/images/netboot/boot.img.gz'
+Debian:
+  Wheezy:
+    shortName : 'wheezy'
+    number    : '7'
+    isoImage  : 'http://ftp.debian.org/debian/dists/wheezy/main/installer-amd64/current/images/netboot/mini.iso'
+    usbImage  : 'http://ftp.debian.org/debian/dists/wheezy/main/installer-amd64/current/images/hd-media/boot.img.gz'

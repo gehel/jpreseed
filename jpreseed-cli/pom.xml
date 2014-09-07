@@ -31,7 +31,7 @@
     <properties>
         <verify.checkstyle.max.violations>2</verify.checkstyle.max.violations>
         <verify.coverage.threshold>90</verify.coverage.threshold>
-        <verify.mutation.threshold>51</verify.mutation.threshold>
+        <verify.mutation.threshold>46</verify.mutation.threshold>
     </properties>
 
     <dependencies>

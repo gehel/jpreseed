@@ -69,7 +69,7 @@ public class FatModifierTest {
     @Test
     public final void newFileCanBeAdded() throws IOException {
         try (FatModifier fatModifier = initFatModifier()) {
-            ByteBuffer newContent = ByteBuffer.wrap("new content".getBytes());
+            ByteBuffer newContent = ByteBuffer.wrap("new getContent".getBytes());
 
             fatModifier.addOrReplace("new_content.txt", newContent);
             fatModifier.flush();
@@ -79,14 +79,14 @@ public class FatModifierTest {
 
             FileSystem fs = createFileSystem(fatBuffer);
 
-            assertThat(getFileContent(fs, "new_content.txt")).hasContent("new content");
+            assertThat(getFileContent(fs, "new_content.txt")).hasContent("new getContent");
         }
     }
 
     @Test
     public final void existingFileCanBeModified() throws IOException {
         try (FatModifier fatModifier = initFatModifier()) {
-            ByteBuffer newContent = ByteBuffer.wrap("new content".getBytes());
+            ByteBuffer newContent = ByteBuffer.wrap("new getContent".getBytes());
 
             assertThat(fatModifier.getFileContent("hello.txt")).hasContent("hello\n");
 
@@ -98,13 +98,13 @@ public class FatModifierTest {
 
             FileSystem fs = createFileSystem(fatBuffer);
 
-            assertThat(getFileContent(fs, "hello.txt")).hasContent("new content");
+            assertThat(getFileContent(fs, "hello.txt")).hasContent("new getContent");
         }
     }
 
     @Test(expected = IllegalStateException.class)
     public final void replacingDirectoryWithFileIsNotPossible() throws IOException {
-        ByteBuffer newContent = ByteBuffer.wrap("new content".getBytes());
+        ByteBuffer newContent = ByteBuffer.wrap("new getContent".getBytes());
 
         try (FatModifier fatModifier = initFatModifier()) {
             fatModifier.addOrReplace("my_dir", newContent);

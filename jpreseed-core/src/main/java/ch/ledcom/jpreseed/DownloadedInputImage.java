@@ -15,28 +15,28 @@
  */
 package ch.ledcom.jpreseed;
 
-import com.github.axet.wget.WGet;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.google.common.io.Closer;
 
-class DownloadReporter implements Runnable {
+import javax.annotation.concurrent.NotThreadSafe;
+import java.io.IOException;
+import java.io.InputStream;
 
-    private final Logger logger = LoggerFactory.getLogger(getClass());
+@NotThreadSafe
+public class DownloadedInputImage implements InputImage {
+    private final Downloader downloader;
+    private final Closer closer = Closer.create();
 
-    private final WGet wget;
-
-    private long lastPercent = 0;
-
-    public DownloadReporter(WGet wget) {
-        this.wget = wget;
+    public DownloadedInputImage(Downloader downloader) {
+        this.downloader = closer.register(downloader);
     }
 
     @Override
-    public void run() {
-        long percent = wget.getInfo().getCount() * 100 / wget.getInfo().getLength();
-        if (percent != lastPercent) {
-            logger.info("{} %", percent);
-            lastPercent = percent;
-        }
+    public final InputStream getContent() throws IOException {
+        return closer.register(downloader.getContent());
+    }
+
+    @Override
+    public final void close() throws IOException {
+        closer.close();
     }
 }

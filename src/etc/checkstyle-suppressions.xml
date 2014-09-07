@@ -22,6 +22,6 @@
 
 <suppressions>
     <suppress
-            checks="JavadocStyleCheck|JavadocMethodCheck|JavadocTypeCheck|JavadocVariableCheck|LineLength|FinalParameters|AvoidStarImport"
+            checks="JavadocStyleCheck|JavadocMethodCheck|JavadocTypeCheck|JavadocVariableCheck|LineLength|FinalParameters|AvoidStarImport|DesignForExtension"
             files=".*"/>
 </suppressions>

@@ -29,9 +29,9 @@
     <artifactId>jpreseed-core</artifactId>
 
     <properties>
-        <verify.checkstyle.max.violations>18</verify.checkstyle.max.violations>
-        <verify.coverage.threshold>97</verify.coverage.threshold>
-        <verify.mutation.threshold>95</verify.mutation.threshold>
+        <verify.checkstyle.max.violations>25</verify.checkstyle.max.violations>
+        <verify.coverage.threshold>98</verify.coverage.threshold>
+        <verify.mutation.threshold>99</verify.mutation.threshold>
     </properties>
 
     <dependencies>
@@ -48,15 +48,28 @@
             <artifactId>fat32-lib</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.github.axet</groupId>
-            <artifactId>wget</artifactId>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient-cache</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+        </dependency>
+
+        <!-- tests -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
         </dependency>
         <dependency>
             <!-- wire mock uses log4j -->
             <groupId>org.slf4j</groupId>
             <artifactId>log4j-over-slf4j</artifactId>
             <scope>test</scope>
-            <version>1.7.7</version>
         </dependency>
         <dependency>
             <groupId>com.github.tomakehurst</groupId>
@@ -81,9 +94,9 @@
                         <check>
                             <branchRate>0</branchRate>
                             <lineRate>0</lineRate>
-                            <packageBranchRate>68</packageBranchRate>
+                            <packageBranchRate>66</packageBranchRate>
                             <packageLineRate>100</packageLineRate>
-                            <totalBranchRate>68</totalBranchRate>
+                            <totalBranchRate>66</totalBranchRate>
                             <totalLineRate>100</totalLineRate>
                         </check>
                         <instrumentation>
