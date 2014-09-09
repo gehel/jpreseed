@@ -9,3 +9,4 @@ Documentation will be available on [Github gh-page](http://gehel.github.io/jpres
 [#69](https://github.com/github/maven-plugins/issues/69) is resolved.
 
 [![Build Status](https://travis-ci.org/gehel/jpreseed.svg?branch=master)](https://travis-ci.org/gehel/jpreseed)
+[![Coverage Status](https://img.shields.io/coveralls/gehel/jpreseed.svg)](https://coveralls.io/r/gehel/jpreseed?branch=master)
