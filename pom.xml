@@ -204,4 +204,30 @@
         <tag>HEAD</tag>
     </scm>
 
+    <profiles>
+        <profile>
+            <id>heroku</id>
+            <activation>
+                <property>
+                    <name>env.DYNO</name>
+                </property>
+            </activation>
+            <build>
+                <pluginManagement>
+                    <plugins>
+                        <plugin>
+                            <groupId>pl.project13.maven</groupId>
+                            <artifactId>git-commit-id-plugin</artifactId>
+                            <executions>
+                                <execution>
+                                    <phase>none</phase>
+                                </execution>
+                            </executions>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
+            </build>
+        </profile>
+    </profiles>
+
 </project>
