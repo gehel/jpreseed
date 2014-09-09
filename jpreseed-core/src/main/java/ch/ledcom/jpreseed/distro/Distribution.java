@@ -13,14 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ch.ledcom.jpreseed;
+package ch.ledcom.jpreseed.distro;
 
-import com.google.common.collect.ImmutableCollection;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 
 import javax.annotation.concurrent.Immutable;
 import javax.annotation.concurrent.ThreadSafe;
-import java.util.Set;
+import java.util.List;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -29,11 +29,12 @@ import static com.google.common.base.Preconditions.checkNotNull;
 public class Distribution {
 
     private final String name;
+    private final ImmutableList<DistroVersion> versions;
     private final ImmutableMap<String, DistroVersion> versionsByName;
     private final ImmutableMap<String, DistroVersion> versionsByShortName;
     private final ImmutableMap<String, DistroVersion> versionsByNumber;
 
-    public Distribution(String name, Set<DistroVersion> versions) {
+    public Distribution(String name, List<DistroVersion> versions) {
         this.name = checkNotNull(name, "Distribution name cannot be null");
         ImmutableMap.Builder<String, DistroVersion> byNameBuilder = ImmutableMap.builder();
         ImmutableMap.Builder<String, DistroVersion> byShortNameBuilder = ImmutableMap.builder();
@@ -45,6 +46,7 @@ public class Distribution {
             byNumberBuilder.put(version.getNumber(), version);
         }
 
+        this.versions = ImmutableList.copyOf(versions);
         this.versionsByName = byNameBuilder.build();
         this.versionsByShortName = byShortNameBuilder.build();
         this.versionsByNumber = byNumberBuilder.build();
@@ -54,8 +56,8 @@ public class Distribution {
         return name;
     }
 
-    public final ImmutableCollection<DistroVersion> getVersions() {
-        return versionsByName.values();
+    public final ImmutableList<DistroVersion> getVersions() {
+        return versions;
     }
 
     public final DistroVersion getVersionByName(String name) {

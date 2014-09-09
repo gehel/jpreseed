@@ -15,7 +15,7 @@
  */
 package ch.ledcom.jpreseed.web;
 
-import ch.ledcom.jpreseed.DistroService;
+import ch.ledcom.jpreseed.distro.DistroService;
 import ch.ledcom.jpreseed.DownloaderFactory;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.impl.client.cache.CacheConfig;

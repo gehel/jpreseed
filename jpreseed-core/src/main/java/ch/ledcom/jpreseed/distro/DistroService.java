@@ -13,32 +13,38 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ch.ledcom.jpreseed;
+package ch.ledcom.jpreseed.distro;
 
 
 import com.google.common.collect.ImmutableCollection;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
 import org.yaml.snakeyaml.Yaml;
 
 import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import static java.util.Map.Entry;
 
 public class DistroService {
 
     private final ImmutableMap<String, Distribution> distributionsByName;
+    private final ImmutableList<DistroAndVersion> flattenedVersions;
 
-    public DistroService(Set<Distribution> distributions) {
+    public DistroService(List<Distribution> distributions) {
         ImmutableMap.Builder<String, Distribution> byNameBuilder = ImmutableMap.builder();
+        ImmutableList.Builder<DistroAndVersion> flattenedBuilder = ImmutableList.builder();
         for (Distribution distro : distributions) {
             byNameBuilder.put(distro.getName(), distro);
+            for (DistroVersion version : distro.getVersions()) {
+                flattenedBuilder.add(new DistroAndVersion(distro, version));
+            }
         }
         this.distributionsByName = byNameBuilder.build();
+        this.flattenedVersions = flattenedBuilder.build();
     }
 
     public final Distribution getDistributionByName(String name) {
@@ -49,8 +55,12 @@ public class DistroService {
         return distributionsByName.values();
     }
 
+    public final ImmutableList<DistroAndVersion> getFlattenedVersions() {
+        return flattenedVersions;
+    }
+
     public static DistroService create(InputStream configuration) throws URISyntaxException {
-        ImmutableSet.Builder<Distribution> distributions = ImmutableSet.builder();
+        ImmutableList.Builder<Distribution> distributions = ImmutableList.builder();
 
         Map<String, Map> yaml = (Map<String, Map>) new Yaml().load(configuration);
 
@@ -61,8 +71,8 @@ public class DistroService {
         return new DistroService(distributions.build());
     }
 
-    private static Set<DistroVersion> extractVersions(Map<String, Map<String, String>> versions) throws URISyntaxException {
-        ImmutableSet.Builder<DistroVersion> result = ImmutableSet.builder();
+    private static List<DistroVersion> extractVersions(Map<String, Map<String, String>> versions) throws URISyntaxException {
+        ImmutableList.Builder<DistroVersion> result = ImmutableList.builder();
 
         for (Entry<String, Map<String, String>> version : versions.entrySet()) {
             String name = version.getKey();

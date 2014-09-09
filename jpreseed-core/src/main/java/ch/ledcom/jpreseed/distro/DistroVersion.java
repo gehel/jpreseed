@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ch.ledcom.jpreseed;
+package ch.ledcom.jpreseed.distro;
 
 import javax.annotation.concurrent.Immutable;
 import javax.annotation.concurrent.ThreadSafe;
@@ -23,7 +23,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 @Immutable
 @ThreadSafe
-class DistroVersion {
+public class DistroVersion {
 
     private final String name;
     private final String shortName;
@@ -39,28 +39,28 @@ class DistroVersion {
         this.usbImageUri = checkNotNull(usbImageUri, "USB image URI cannot be null");
     }
 
-    public String getName() {
+    public final String getName() {
         return name;
     }
 
-    public String getShortName() {
+    public final String getShortName() {
         return shortName;
     }
 
-    public String getNumber() {
+    public final String getNumber() {
         return number;
     }
 
-    public URI getIsoImageUri() {
+    public final URI getIsoImageUri() {
         return isoImageUri;
     }
 
-    public URI getUsbImageUri() {
+    public final URI getUsbImageUri() {
         return usbImageUri;
     }
 
     @Override
-    public String toString() {
+    public final String toString() {
         return name;
     }
 }

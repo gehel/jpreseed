@@ -29,37 +29,51 @@
 </head>
 <body>
 <div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <h1>Preseed image creator</h1>
-        </div>
+
+    <div class="page-header">
+        <h1>Preseed image creator</h1>
     </div>
 
     <div class="row">
-        <div class="col-md-12">
-            <ul th:each="distro : ${distributions}">
-                <li th:text="${distro.name}"></li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-12">
-            <form method="post" enctype="multipart/form-data" role="form">
+        <div class="col-md-8">
+            <form id="usbCreator" method="post" enctype="multipart/form-data" role="form">
                 <div class="form-group">
-                    <label for="imageUrl">image URL</label>
-                    <input id="imageUrl" name="imageUrl" type="url"/>
+                    <label for="distro">distribution</label>
+                    <select id="distro" name="distro" form="usbCreator">
+                        <option th:each="distro : ${distributions}"
+                                th:value="${distro.name}"
+                                th:text="${distro.name}"/>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="version">version</label>
+                    <select id="version" name="version" form="usbCreator">
+                        <option th:each="distroAndVersion : ${distributionsAndVersions}"
+                                th:value="${distroAndVersion.version.shortName}"
+                                th:class="${distroAndVersion.distribution.name}"
+                                th:text="${distroAndVersion.version.name}"/>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="preseeds">preseeds</label>
-                    <input id="preseeds" name="preseeds" type="file" multiple="multiple"/>
+                    <input id="preseeds" name="preseeds" type="file" multiple="multiple" accept=".seed"/>
                 </div>
                 <div class="form-group">
                     <label for="syslinux">syslinux</label>
                     <input id="syslinux" name="syslinux" type="file"/>
                 </div>
-                <input type="submit" value="GO"/>
+                <input type="submit" value="Create USB image"/>
             </form>
+        </div>
+
+        <div class="col-md-4">
+            <h2>What is this</h2>
+            <p>A simple way to create USB images to install Debian derivatives with custom preseeds.</p>
+            <p>Select the distribution and version you will use as a base for your install image, upload a bunch of
+            preseed files and a syslinux configuration, click the button and voilà !</p>
+
+            <h2>More infos</h2>
+            <p>Have a look at the <a href="https://github.com/gehel/jpreseed/">project page on GitHub</a>.</p>
         </div>
     </div>
 </div>
@@ -67,5 +81,10 @@
         th:src="@{/webjars/jquery/2.1.1/jquery.min.js}"></script>
 <script src="http://cdn.jsdelivr.net/webjars/bootstrap/3.2.0/js/bootstrap.min.js"
         th:src="@{/webjars/bootstrap/3.2.0/js/bootstrap.min.js}"></script>
+<script src="http://cdn.jsdelivr.net/webjars/jquery-chained/0.9.3/jquery.chained.min.js"
+        th:src="@{/webjars/jquery-chained/0.9.3/jquery.chained.min.js}"></script>
+<script type="text/javascript">
+    $('#version').chained('#distro');
+</script>
 </body>
 </html>

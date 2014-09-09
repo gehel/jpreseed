@@ -29,7 +29,7 @@
     <artifactId>jpreseed-core</artifactId>
 
     <properties>
-        <verify.checkstyle.max.violations>25</verify.checkstyle.max.violations>
+        <verify.checkstyle.max.violations>29</verify.checkstyle.max.violations>
         <verify.coverage.threshold>98</verify.coverage.threshold>
         <verify.mutation.threshold>99</verify.mutation.threshold>
     </properties>
@@ -94,7 +94,7 @@
                         <check>
                             <branchRate>0</branchRate>
                             <lineRate>0</lineRate>
-                            <packageBranchRate>66</packageBranchRate>
+                            <packageBranchRate>60</packageBranchRate>
                             <packageLineRate>100</packageLineRate>
                             <totalBranchRate>66</totalBranchRate>
                             <totalLineRate>100</totalLineRate>

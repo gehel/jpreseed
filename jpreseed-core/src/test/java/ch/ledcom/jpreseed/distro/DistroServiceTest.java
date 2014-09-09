@@ -13,9 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ch.ledcom.jpreseed;
+package ch.ledcom.jpreseed.distro;
 
-import com.google.common.collect.ImmutableCollection;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -23,6 +22,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.Collection;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -39,7 +40,7 @@ public class DistroServiceTest {
 
     @Test
     public void loadingDistributionListFromYaml() throws URISyntaxException {
-        ImmutableCollection<Distribution> distributions = distroService.getDistributions();
+        Collection<Distribution> distributions = distroService.getDistributions();
 
         assertThat(distributions).extracting("name")
                 .contains("Ubuntu")
@@ -55,6 +56,17 @@ public class DistroServiceTest {
         assertThat(trusty.getNumber()).isEqualTo("14.04");
         assertThat(trusty.getIsoImageUri()).isEqualTo(new URI("http://archive.ubuntu.com/ubuntu/dists/trusty-updates/main/installer-amd64/current/images/netboot/mini.iso"));
         assertThat(trusty.getUsbImageUri()).isEqualTo(new URI("http://archive.ubuntu.com/ubuntu/dists/trusty-updates/main/installer-amd64/current/images/netboot/boot.img.gz"));
+    }
+
+    @Test
+    public void flattenedDistributionsAreCorrect() {
+        List<DistroAndVersion> flattenedDistros = distroService.getFlattenedVersions();
+
+        assertThat(flattenedDistros).hasSize(4);
+
+        DistroAndVersion trusty = flattenedDistros.get(0);
+        assertThat(trusty.getDistribution().getName()).isEqualTo("Ubuntu");
+        assertThat(trusty.getVersion().getName()).isEqualTo("Trusty Tahr");
     }
 
 }

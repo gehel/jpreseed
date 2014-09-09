@@ -13,9 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ch.ledcom.jpreseed;
+package ch.ledcom.jpreseed.distro;
 
+import ch.ledcom.jpreseed.distro.Distribution;
+import ch.ledcom.jpreseed.distro.DistroVersion;
 import com.google.common.collect.ImmutableCollection;
+import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
 import org.junit.Before;
 import org.junit.Test;
@@ -44,7 +47,7 @@ public class DistributionTest {
                 new URI("http://test.iso/saucy"),
                 new URI("http://test.usb/saucy"));
 
-        ubuntu = new Distribution("Ubuntu", ImmutableSet.of(trusty, saucy));
+        ubuntu = new Distribution("Ubuntu", ImmutableList.of(trusty, saucy));
     }
 
     @Test

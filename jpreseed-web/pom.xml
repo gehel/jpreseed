@@ -33,7 +33,7 @@
     <properties>
         <verify.checkstyle.max.violations>4</verify.checkstyle.max.violations>
         <verify.coverage.threshold>93</verify.coverage.threshold>
-        <verify.mutation.threshold>43</verify.mutation.threshold>
+        <verify.mutation.threshold>40</verify.mutation.threshold>
     </properties>
 
     <dependencies>
@@ -81,7 +81,10 @@
             <groupId>org.webjars</groupId>
             <artifactId>jquery</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>jquery-chained</artifactId>
+        </dependency>
         <!-- tests -->
         <dependency>
             <groupId>ch.ledcom.assertj-extensions</groupId>
@@ -220,10 +223,10 @@
                         <check>
                             <branchRate>0</branchRate>
                             <lineRate>0</lineRate>
-                            <packageBranchRate>15</packageBranchRate>
-                            <packageLineRate>45</packageLineRate>
-                            <totalBranchRate>15</totalBranchRate>
-                            <totalLineRate>45</totalLineRate>
+                            <packageBranchRate>9</packageBranchRate>
+                            <packageLineRate>40</packageLineRate>
+                            <totalBranchRate>9</totalBranchRate>
+                            <totalLineRate>40</totalLineRate>
                         </check>
                         <instrumentation>
                             <excludes>

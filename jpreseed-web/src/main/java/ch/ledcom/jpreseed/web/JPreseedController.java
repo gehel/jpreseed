@@ -16,7 +16,9 @@
 package ch.ledcom.jpreseed.web;
 
 import ch.ledcom.jpreseed.*;
-import com.google.common.collect.ImmutableList;
+import ch.ledcom.jpreseed.distro.Distribution;
+import ch.ledcom.jpreseed.distro.DistroAndVersion;
+import ch.ledcom.jpreseed.distro.DistroService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,6 +61,11 @@ public class JPreseedController {
         return distroService.getDistributions();
     }
 
+    @ModelAttribute("distributionsAndVersions")
+    public List<DistroAndVersion> distributionsAndVersions() {
+        return distroService.getFlattenedVersions();
+    }
+
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index() {
         return "index";
@@ -66,15 +73,18 @@ public class JPreseedController {
 
     @RequestMapping(value = "/", method = RequestMethod.POST, produces = GZIP)
     public void createUsbImage(
-            @RequestParam("imageUrl") URI imageUrl,
+            @RequestParam("distro") String distro,
+            @RequestParam("version") String version,
             @RequestParam("preseeds") List<MultipartFile> preseeds,
             @RequestParam("syslinux") MultipartFile syslinux,
             HttpServletResponse response,
             OutputStream out) throws IOException {
-        
+
+        URI imageUri = distroService.getDistributionByName(distro).getVersionByShortName(version).getUsbImageUri();
+
         try (
                 TemporaryPreseedStore preseedStore = new TemporaryPreseedStore();
-                Downloader srcBootImgGz = downloaderFactory.getDownloader(imageUrl);
+                Downloader srcBootImgGz = downloaderFactory.getDownloader(imageUri);
                 GZIPOutputStream targetBootImgGz = new GZIPOutputStream(out)) {
 
             logger.debug("Storing preseeds...");

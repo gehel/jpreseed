@@ -13,26 +13,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ch.ledcom.jpreseed.cli;
+package ch.ledcom.jpreseed.distro;
 
-import com.beust.jcommander.ParameterException;
-import com.beust.jcommander.converters.BaseConverter;
+public class DistroAndVersion {
 
-import java.net.URI;
-import java.net.URISyntaxException;
+    private final Distribution distribution;
+    private final DistroVersion version;
 
-public class URIConverter extends BaseConverter<URI> {
-
-    public URIConverter(String optionName) {
-        super(optionName);
+    public DistroAndVersion(Distribution distribution, DistroVersion version) {
+        this.distribution = distribution;
+        this.version = version;
     }
 
-    @Override
-    public final URI convert(String value) {
-        try {
-            return new URI(value);
-        } catch (URISyntaxException ignore) {
-            throw new ParameterException(getErrorString(value, "a URI"));
-        }
+    public final Distribution getDistribution() {
+        return distribution;
+    }
+
+    public final DistroVersion getVersion() {
+        return version;
     }
 }
