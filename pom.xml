@@ -44,7 +44,7 @@
     <inceptionYear>2014</inceptionYear>
 
     <properties>
-        <verify.checkstyle.max.violations>18</verify.checkstyle.max.violations>
+        <verify.checkstyle.max.violations>0</verify.checkstyle.max.violations>
         <verify.coverage.threshold>100</verify.coverage.threshold>
         <verify.mutation.threshold>100</verify.mutation.threshold>
         <spring.boot.version>1.1.6.RELEASE</spring.boot.version>
