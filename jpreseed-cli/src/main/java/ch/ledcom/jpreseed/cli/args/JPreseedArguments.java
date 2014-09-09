@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ch.ledcom.jpreseed.cli;
+package ch.ledcom.jpreseed.cli.args;
 
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.ParameterException;

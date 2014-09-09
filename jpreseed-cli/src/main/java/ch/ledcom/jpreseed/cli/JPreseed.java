@@ -16,6 +16,7 @@
 package ch.ledcom.jpreseed.cli;
 
 import ch.ledcom.jpreseed.*;
+import ch.ledcom.jpreseed.cli.args.JPreseedArguments;
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.ParameterException;
 import org.apache.http.client.config.RequestConfig;

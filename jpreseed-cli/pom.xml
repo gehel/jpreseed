@@ -29,7 +29,7 @@
     <artifactId>jpreseed-cli</artifactId>
 
     <properties>
-        <verify.checkstyle.max.violations>2</verify.checkstyle.max.violations>
+        <verify.checkstyle.max.violations>3</verify.checkstyle.max.violations>
         <verify.coverage.threshold>90</verify.coverage.threshold>
         <verify.mutation.threshold>46</verify.mutation.threshold>
     </properties>
@@ -89,9 +89,14 @@
                             <lineRate>0</lineRate>
                             <totalBranchRate>37</totalBranchRate>
                             <totalLineRate>50</totalLineRate>
-                            <packageBranchRate>37</packageBranchRate>
-                            <packageLineRate>50</packageLineRate>
+                            <packageBranchRate>0</packageBranchRate>
+                            <packageLineRate>0</packageLineRate>
                         </check>
+                        <instrumentation>
+                            <excludes>
+                                <exclude>ch/ledcom/jpreseed.cli/JPreseed.class</exclude>
+                            </excludes>
+                        </instrumentation>
                     </configuration>
                 </plugin>
             </plugins>

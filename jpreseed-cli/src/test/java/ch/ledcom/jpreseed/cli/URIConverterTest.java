@@ -15,6 +15,7 @@
  */
 package ch.ledcom.jpreseed.cli;
 
+import ch.ledcom.jpreseed.cli.args.URIConverter;
 import com.beust.jcommander.ParameterException;
 import org.junit.Test;
 

@@ -15,6 +15,7 @@
  */
 package ch.ledcom.jpreseed.cli;
 
+import ch.ledcom.jpreseed.cli.args.NonExistingPathValidator;
 import com.beust.jcommander.ParameterException;
 import org.junit.Test;
 

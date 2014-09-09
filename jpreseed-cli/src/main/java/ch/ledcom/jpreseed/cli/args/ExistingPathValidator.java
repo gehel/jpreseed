@@ -13,26 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ch.ledcom.jpreseed.cli;
+package ch.ledcom.jpreseed.cli.args;
 
+import com.beust.jcommander.IValueValidator;
 import com.beust.jcommander.ParameterException;
-import com.beust.jcommander.converters.BaseConverter;
 
-import java.net.URI;
-import java.net.URISyntaxException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
-public class URIConverter extends BaseConverter<URI> {
+import static java.lang.String.format;
 
-    public URIConverter(String optionName) {
-        super(optionName);
-    }
-
+public class ExistingPathValidator implements IValueValidator<Path> {
     @Override
-    public final URI convert(String value) {
-        try {
-            return new URI(value);
-        } catch (URISyntaxException ignore) {
-            throw new ParameterException(getErrorString(value, "a URI"));
+    public final void validate(String name, Path value) {
+        if (!Files.exists(value)) {
+            throw new ParameterException(format("File <%s> does not exist for option <%s>", value, name));
         }
     }
 }

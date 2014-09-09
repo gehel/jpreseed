@@ -15,6 +15,7 @@
  */
 package ch.ledcom.jpreseed.cli;
 
+import ch.ledcom.jpreseed.cli.args.JPreseedArguments;
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.ParameterException;
 import org.junit.Before;
@@ -28,7 +29,7 @@ import java.nio.file.Paths;
 
 import static ch.ledcom.jpreseed.cli.TestFiles.*;
 import static ch.ledcom.assertj.LedcomAssertions.assertThat;
-import static ch.ledcom.jpreseed.cli.JPreseedArguments.*;
+import static ch.ledcom.jpreseed.cli.args.JPreseedArguments.*;
 
 public class JPreseedArgumentsTest {
 
