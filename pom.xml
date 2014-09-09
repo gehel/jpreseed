@@ -179,8 +179,7 @@
                     <configuration combine.children="append">
                         <excludes>
                             <exclude>.jdk/**</exclude>
-                            <exclude>system.properties</exclude>
-                            <exclude>.profile.d</exclude>
+                            <exclude>.profile.d/**</exclude>
                         </excludes>
                     </configuration>
                 </plugin>
