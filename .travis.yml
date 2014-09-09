@@ -26,5 +26,6 @@ deploy:
   api_key:
     secure: Zt+Dn7s0vYBzkaJN2sscj7lucO1ivgYUd3kuV3Pv3GbBA1/7sVVnVYvfN4r3tLE4NPAO4amuDBRVESagu77sxKYmq3J0zTer+WwxinrjdKSyC4DVZ5HynnDVEzhClgcurD5fG9dsHHHdH8ObJC6WBDZ4EpSejfhUwjWHi3AxviU=
   app: jpreseed
+  strategy: git
   on:
     repo: gehel/jpreseed
