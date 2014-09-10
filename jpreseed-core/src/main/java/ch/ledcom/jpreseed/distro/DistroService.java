@@ -62,9 +62,10 @@ public class DistroService {
     public static DistroService create(InputStream configuration) throws URISyntaxException {
         ImmutableList.Builder<Distribution> distributions = ImmutableList.builder();
 
-        Map<String, Map> yaml = (Map<String, Map>) new Yaml().load(configuration);
+        Map<String, Map<String, Map<String, String>>> yaml =
+                (Map<String, Map<String, Map<String, String>>>) new Yaml().load(configuration);
 
-        for (Entry<String, Map> distribution : yaml.entrySet()) {
+        for (Entry<String, Map<String, Map<String, String>>> distribution : yaml.entrySet()) {
             distributions.add(new Distribution(distribution.getKey(), extractVersions(distribution.getValue())));
         }
 
