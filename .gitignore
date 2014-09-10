@@ -1,4 +1,6 @@
 .dpl
 .idea
-target
+bin
 jpreseed.iml
+target
+version.properties
