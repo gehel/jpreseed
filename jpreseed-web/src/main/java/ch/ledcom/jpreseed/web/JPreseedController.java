@@ -19,6 +19,7 @@ import ch.ledcom.jpreseed.*;
 import ch.ledcom.jpreseed.distro.Distribution;
 import ch.ledcom.jpreseed.distro.DistroAndVersion;
 import ch.ledcom.jpreseed.distro.DistroService;
+import com.google.common.base.Strings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,6 +65,16 @@ public class JPreseedController {
     @ModelAttribute("distributionsAndVersions")
     public List<DistroAndVersion> distributionsAndVersions() {
         return distroService.getFlattenedVersions();
+    }
+
+    @ModelAttribute("googleAnalytics")
+    public String googleAnalytics() {
+        return System.getenv("GOOGLE_ANALYTICS");
+    }
+
+    @ModelAttribute("enableGoogleAnalytics")
+    public boolean enableGoogleAnalytics() {
+        return !Strings.isNullOrEmpty(System.getenv("GOOGLE_ANALYTICS"));
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
