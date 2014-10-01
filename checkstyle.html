@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>jpreseed-core &#x2013; Checkstyle Results</title>
+    <title>jpreseed-cli &#x2013; Checkstyle Results</title>
     <style type="text/css" media="all">
       @import url("./css/maven-base.css");
       @import url("./css/maven-theme.css");
@@ -17,7 +17,7 @@
   <body class="composite">
     <div id="banner">
                     <div id="bannerLeft">
-                jpreseed-core
+                jpreseed-cli
                 </div>
                     <div class="clear">
         <hr/>
@@ -30,7 +30,7 @@
         <span id="publishDate">Last Published: 2014-10-01</span>
                   &nbsp;| <span id="projectVersion">Version: 1.0-SNAPSHOT</span>
                       </div>
-            <div class="xright">                    <a href="./" title="jpreseed-core">jpreseed-core</a>
+            <div class="xright">                    <a href="./" title="jpreseed-cli">jpreseed-cli</a>
               
                     
       </div>
@@ -128,10 +128,10 @@
 <th><img src="images/icon_warning_sml.gif" alt="" />&#160;Warnings</th>
 <th><img src="images/icon_error_sml.gif" alt="" />&#160;Errors</th></tr>
 <tr class="b">
-<td>16</td>
+<td>8</td>
 <td>0</td>
 <td>0</td>
-<td>26</td></tr></table></div>
+<td>3</td></tr></table></div>
 <div class="section">
 <h2><a name="Files"></a>Files</h2>
 <table border="0" class="bodyTable">
@@ -141,145 +141,32 @@
 <th><img src="images/icon_warning_sml.gif" alt="" />&#160;W</th>
 <th><img src="images/icon_error_sml.gif" alt="" />&#160;E</th></tr>
 <tr class="b">
-<td><a href="#ch.ledcom.jpreseed.DownloadedInputImage.java">ch/ledcom/jpreseed/DownloadedInputImage.java</a></td>
+<td><a href="#ch.ledcom.jpreseed.cli.JPreseed.java">ch/ledcom/jpreseed/cli/JPreseed.java</a></td>
 <td>0</td>
 <td>0</td>
-<td>1</td></tr>
-<tr class="a">
-<td><a href="#ch.ledcom.jpreseed.Downloader.java">ch/ledcom/jpreseed/Downloader.java</a></td>
-<td>0</td>
-<td>0</td>
-<td>2</td></tr>
-<tr class="b">
-<td><a href="#ch.ledcom.jpreseed.DownloaderFactory.java">ch/ledcom/jpreseed/DownloaderFactory.java</a></td>
-<td>0</td>
-<td>0</td>
-<td>1</td></tr>
-<tr class="a">
-<td><a href="#ch.ledcom.jpreseed.InitrdRepacker.java">ch/ledcom/jpreseed/InitrdRepacker.java</a></td>
-<td>0</td>
-<td>0</td>
-<td>1</td></tr>
-<tr class="b">
-<td><a href="#ch.ledcom.jpreseed.InputStreamImage.java">ch/ledcom/jpreseed/InputStreamImage.java</a></td>
-<td>0</td>
-<td>0</td>
-<td>1</td></tr>
-<tr class="a">
-<td><a href="#ch.ledcom.jpreseed.UsbCreator.java">ch/ledcom/jpreseed/UsbCreator.java</a></td>
-<td>0</td>
-<td>0</td>
-<td>1</td></tr>
-<tr class="b">
-<td><a href="#ch.ledcom.jpreseed.distro.Distribution.java">ch/ledcom/jpreseed/distro/Distribution.java</a></td>
-<td>0</td>
-<td>0</td>
-<td>3</td></tr>
-<tr class="a">
-<td><a href="#ch.ledcom.jpreseed.distro.DistroAndVersion.java">ch/ledcom/jpreseed/distro/DistroAndVersion.java</a></td>
-<td>0</td>
-<td>0</td>
-<td>2</td></tr>
-<tr class="b">
-<td><a href="#ch.ledcom.jpreseed.distro.DistroService.java">ch/ledcom/jpreseed/distro/DistroService.java</a></td>
-<td>0</td>
-<td>0</td>
-<td>1</td></tr>
-<tr class="a">
-<td><a href="#ch.ledcom.jpreseed.distro.DistroVersion.java">ch/ledcom/jpreseed/distro/DistroVersion.java</a></td>
-<td>0</td>
-<td>0</td>
-<td>5</td></tr>
-<tr class="b">
-<td><a href="#com.google.common.io.ByteBufferDataInputStream.java">com/google/common/io/ByteBufferDataInputStream.java</a></td>
-<td>0</td>
-<td>0</td>
-<td>6</td></tr>
-<tr class="a">
-<td><a href="#com.google.common.io.ByteBufferDataOutputStream.java">com/google/common/io/ByteBufferDataOutputStream.java</a></td>
-<td>0</td>
-<td>0</td>
-<td>2</td></tr></table></div>
+<td>3</td></tr></table></div>
 <div class="section">
 <h2><a name="Rules"></a>Rules</h2>
 <table border="0" class="bodyTable">
-<tr class="b">
+<tr class="a">
 <th>Category</th>
 <th>Rule</th>
 <th>Violations</th>
 <th>Severity</th></tr>
-<tr class="a">
-<td>blocks</td>
-<td><a class="externalLink" href="http://checkstyle.sourceforge.net/config_blocks.html#EmptyBlock">EmptyBlock</a></td>
-<td>1</td>
-<td><img src="images/icon_error_sml.gif" alt="" />&#160;Error</td></tr>
 <tr class="b">
 <td>coding</td>
-<td><a class="externalLink" href="http://checkstyle.sourceforge.net/config_coding.html#AvoidInlineConditionals">AvoidInlineConditionals</a></td>
+<td><a class="externalLink" href="http://checkstyle.sourceforge.net/config_coding.html#HiddenField">HiddenField</a></td>
 <td>2</td>
 <td><img src="images/icon_error_sml.gif" alt="" />&#160;Error</td></tr>
 <tr class="a">
 <td></td>
-<td><a class="externalLink" href="http://checkstyle.sourceforge.net/config_coding.html#HiddenField">HiddenField</a></td>
-<td>18</td>
-<td><img src="images/icon_error_sml.gif" alt="" />&#160;Error</td></tr>
-<tr class="b">
-<td></td>
 <td><a class="externalLink" href="http://checkstyle.sourceforge.net/config_coding.html#MagicNumber">MagicNumber</a></td>
-<td>3</td>
-<td><img src="images/icon_error_sml.gif" alt="" />&#160;Error</td></tr>
-<tr class="a">
-<td>imports</td>
-<td><a class="externalLink" href="http://checkstyle.sourceforge.net/config_imports.html#UnusedImports">UnusedImports</a></td>
-<td>1</td>
-<td><img src="images/icon_error_sml.gif" alt="" />&#160;Error</td></tr>
-<tr class="b">
-<td>javadoc</td>
-<td><a class="externalLink" href="http://checkstyle.sourceforge.net/config_javadoc.html#JavadocPackage">JavadocPackage</a>
-<ul>
-<li>allowLegacy: <tt>&quot;true&quot;</tt></li></ul></td>
 <td>1</td>
 <td><img src="images/icon_error_sml.gif" alt="" />&#160;Error</td></tr></table></div>
 <div class="section">
 <h2><a name="Details"></a>Details</h2>
 <div class="section">
-<h3 id="ch.ledcom.jpreseed.DownloadedInputImage.java">ch/ledcom/jpreseed/DownloadedInputImage.java</h3>
-<table border="0" class="bodyTable">
-<tr class="a">
-<th>Severity</th>
-<th>Category</th>
-<th>Rule</th>
-<th>Message</th>
-<th>Line</th></tr>
-<tr class="b">
-<td><img src="images/icon_error_sml.gif" alt="" />&#160;Error</td>
-<td>coding</td>
-<td>HiddenField</td>
-<td>'downloader' hides a field.</td>
-<td><a href="./xref/ch/ledcom/jpreseed/DownloadedInputImage.html#L29">29</a></td></tr></table></div>
-<div class="section">
-<h3 id="ch.ledcom.jpreseed.Downloader.java">ch/ledcom/jpreseed/Downloader.java</h3>
-<table border="0" class="bodyTable">
-<tr class="a">
-<th>Severity</th>
-<th>Category</th>
-<th>Rule</th>
-<th>Message</th>
-<th>Line</th></tr>
-<tr class="b">
-<td><img src="images/icon_error_sml.gif" alt="" />&#160;Error</td>
-<td>coding</td>
-<td>HiddenField</td>
-<td>'httpClient' hides a field.</td>
-<td><a href="./xref/ch/ledcom/jpreseed/Downloader.html#L35">35</a></td></tr>
-<tr class="a">
-<td><img src="images/icon_error_sml.gif" alt="" />&#160;Error</td>
-<td>coding</td>
-<td>HiddenField</td>
-<td>'uri' hides a field.</td>
-<td><a href="./xref/ch/ledcom/jpreseed/Downloader.html#L35">35</a></td></tr></table></div>
-<div class="section">
-<h3 id="ch.ledcom.jpreseed.DownloaderFactory.java">ch/ledcom/jpreseed/DownloaderFactory.java</h3>
+<h3 id="ch.ledcom.jpreseed.cli.JPreseed.java">ch/ledcom/jpreseed/cli/JPreseed.java</h3>
 <table border="0" class="bodyTable">
 <tr class="b">
 <th>Severity</th>
@@ -291,221 +178,20 @@
 <td><img src="images/icon_error_sml.gif" alt="" />&#160;Error</td>
 <td>coding</td>
 <td>HiddenField</td>
-<td>'httpClient' hides a field.</td>
-<td><a href="./xref/ch/ledcom/jpreseed/DownloaderFactory.html#L28">28</a></td></tr></table></div>
-<div class="section">
-<h3 id="ch.ledcom.jpreseed.InitrdRepacker.java">ch/ledcom/jpreseed/InitrdRepacker.java</h3>
-<table border="0" class="bodyTable">
-<tr class="b">
-<th>Severity</th>
-<th>Category</th>
-<th>Rule</th>
-<th>Message</th>
-<th>Line</th></tr>
-<tr class="a">
-<td><img src="images/icon_error_sml.gif" alt="" />&#160;Error</td>
-<td>coding</td>
-<td>HiddenField</td>
-<td>'initrdGz' hides a field.</td>
-<td><a href="./xref/ch/ledcom/jpreseed/InitrdRepacker.html#L46">46</a></td></tr></table></div>
-<div class="section">
-<h3 id="ch.ledcom.jpreseed.InputStreamImage.java">ch/ledcom/jpreseed/InputStreamImage.java</h3>
-<table border="0" class="bodyTable">
-<tr class="b">
-<th>Severity</th>
-<th>Category</th>
-<th>Rule</th>
-<th>Message</th>
-<th>Line</th></tr>
-<tr class="a">
-<td><img src="images/icon_error_sml.gif" alt="" />&#160;Error</td>
-<td>coding</td>
-<td>HiddenField</td>
-<td>'inputStream' hides a field.</td>
-<td><a href="./xref/ch/ledcom/jpreseed/InputStreamImage.html#L29">29</a></td></tr></table></div>
-<div class="section">
-<h3 id="ch.ledcom.jpreseed.UsbCreator.java">ch/ledcom/jpreseed/UsbCreator.java</h3>
-<table border="0" class="bodyTable">
-<tr class="b">
-<th>Severity</th>
-<th>Category</th>
-<th>Rule</th>
-<th>Message</th>
-<th>Line</th></tr>
-<tr class="a">
-<td><img src="images/icon_error_sml.gif" alt="" />&#160;Error</td>
-<td>imports</td>
-<td>UnusedImports</td>
-<td>Unused import - com.google.common.collect.ImmutableSet.copyOf.</td>
-<td><a href="./xref/ch/ledcom/jpreseed/UsbCreator.html#L28">28</a></td></tr></table></div>
-<div class="section">
-<h3 id="ch.ledcom.jpreseed.distro.Distribution.java">ch/ledcom/jpreseed/distro/Distribution.java</h3>
-<table border="0" class="bodyTable">
-<tr class="b">
-<th>Severity</th>
-<th>Category</th>
-<th>Rule</th>
-<th>Message</th>
-<th>Line</th></tr>
-<tr class="a">
-<td><img src="images/icon_error_sml.gif" alt="" />&#160;Error</td>
-<td>coding</td>
-<td>HiddenField</td>
-<td>'name' hides a field.</td>
-<td><a href="./xref/ch/ledcom/jpreseed/distro/Distribution.html#L37">37</a></td></tr>
+<td>'downloaderFactory' hides a field.</td>
+<td><a href="./xref/ch/ledcom/jpreseed/cli/JPreseed.html#L45">45</a></td></tr>
 <tr class="b">
 <td><img src="images/icon_error_sml.gif" alt="" />&#160;Error</td>
 <td>coding</td>
 <td>HiddenField</td>
-<td>'versions' hides a field.</td>
-<td><a href="./xref/ch/ledcom/jpreseed/distro/Distribution.html#L37">37</a></td></tr>
-<tr class="a">
-<td><img src="images/icon_error_sml.gif" alt="" />&#160;Error</td>
-<td>coding</td>
-<td>HiddenField</td>
-<td>'name' hides a field.</td>
-<td><a href="./xref/ch/ledcom/jpreseed/distro/Distribution.html#L63">63</a></td></tr></table></div>
-<div class="section">
-<h3 id="ch.ledcom.jpreseed.distro.DistroAndVersion.java">ch/ledcom/jpreseed/distro/DistroAndVersion.java</h3>
-<table border="0" class="bodyTable">
-<tr class="b">
-<th>Severity</th>
-<th>Category</th>
-<th>Rule</th>
-<th>Message</th>
-<th>Line</th></tr>
-<tr class="a">
-<td><img src="images/icon_error_sml.gif" alt="" />&#160;Error</td>
-<td>coding</td>
-<td>HiddenField</td>
-<td>'distribution' hides a field.</td>
-<td><a href="./xref/ch/ledcom/jpreseed/distro/DistroAndVersion.html#L23">23</a></td></tr>
-<tr class="b">
-<td><img src="images/icon_error_sml.gif" alt="" />&#160;Error</td>
-<td>coding</td>
-<td>HiddenField</td>
-<td>'version' hides a field.</td>
-<td><a href="./xref/ch/ledcom/jpreseed/distro/DistroAndVersion.html#L23">23</a></td></tr></table></div>
-<div class="section">
-<h3 id="ch.ledcom.jpreseed.distro.DistroService.java">ch/ledcom/jpreseed/distro/DistroService.java</h3>
-<table border="0" class="bodyTable">
-<tr class="a">
-<th>Severity</th>
-<th>Category</th>
-<th>Rule</th>
-<th>Message</th>
-<th>Line</th></tr>
-<tr class="b">
-<td><img src="images/icon_error_sml.gif" alt="" />&#160;Error</td>
-<td>javadoc</td>
-<td>JavadocPackage</td>
-<td>Missing package-info.java file.</td>
-<td></td></tr></table></div>
-<div class="section">
-<h3 id="ch.ledcom.jpreseed.distro.DistroVersion.java">ch/ledcom/jpreseed/distro/DistroVersion.java</h3>
-<table border="0" class="bodyTable">
-<tr class="a">
-<th>Severity</th>
-<th>Category</th>
-<th>Rule</th>
-<th>Message</th>
-<th>Line</th></tr>
-<tr class="b">
-<td><img src="images/icon_error_sml.gif" alt="" />&#160;Error</td>
-<td>coding</td>
-<td>HiddenField</td>
-<td>'name' hides a field.</td>
-<td><a href="./xref/ch/ledcom/jpreseed/distro/DistroVersion.html#L34">34</a></td></tr>
-<tr class="a">
-<td><img src="images/icon_error_sml.gif" alt="" />&#160;Error</td>
-<td>coding</td>
-<td>HiddenField</td>
-<td>'shortName' hides a field.</td>
-<td><a href="./xref/ch/ledcom/jpreseed/distro/DistroVersion.html#L34">34</a></td></tr>
-<tr class="b">
-<td><img src="images/icon_error_sml.gif" alt="" />&#160;Error</td>
-<td>coding</td>
-<td>HiddenField</td>
-<td>'number' hides a field.</td>
-<td><a href="./xref/ch/ledcom/jpreseed/distro/DistroVersion.html#L34">34</a></td></tr>
-<tr class="a">
-<td><img src="images/icon_error_sml.gif" alt="" />&#160;Error</td>
-<td>coding</td>
-<td>HiddenField</td>
-<td>'isoImageUri' hides a field.</td>
-<td><a href="./xref/ch/ledcom/jpreseed/distro/DistroVersion.html#L34">34</a></td></tr>
-<tr class="b">
-<td><img src="images/icon_error_sml.gif" alt="" />&#160;Error</td>
-<td>coding</td>
-<td>HiddenField</td>
-<td>'usbImageUri' hides a field.</td>
-<td><a href="./xref/ch/ledcom/jpreseed/distro/DistroVersion.html#L34">34</a></td></tr></table></div>
-<div class="section">
-<h3 id="com.google.common.io.ByteBufferDataInputStream.java">com/google/common/io/ByteBufferDataInputStream.java</h3>
-<table border="0" class="bodyTable">
-<tr class="a">
-<th>Severity</th>
-<th>Category</th>
-<th>Rule</th>
-<th>Message</th>
-<th>Line</th></tr>
-<tr class="b">
-<td><img src="images/icon_error_sml.gif" alt="" />&#160;Error</td>
-<td>coding</td>
-<td>HiddenField</td>
-<td>'buf' hides a field.</td>
-<td><a href="./xref/com/google/common/io/ByteBufferDataInputStream.html#L66">66</a></td></tr>
+<td>'usbCreator' hides a field.</td>
+<td><a href="./xref/ch/ledcom/jpreseed/cli/JPreseed.html#L45">45</a></td></tr>
 <tr class="a">
 <td><img src="images/icon_error_sml.gif" alt="" />&#160;Error</td>
 <td>coding</td>
 <td>MagicNumber</td>
-<td>'0xff' is a magic number.</td>
-<td><a href="./xref/com/google/common/io/ByteBufferDataInputStream.html#L100">100</a></td></tr>
-<tr class="b">
-<td><img src="images/icon_error_sml.gif" alt="" />&#160;Error</td>
-<td>blocks</td>
-<td>EmptyBlock</td>
-<td>Must have at least one statement.</td>
-<td><a href="./xref/com/google/common/io/ByteBufferDataInputStream.html#L214">214</a></td></tr>
-<tr class="a">
-<td><img src="images/icon_error_sml.gif" alt="" />&#160;Error</td>
-<td>coding</td>
-<td>AvoidInlineConditionals</td>
-<td>Avoid inline conditionals.</td>
-<td><a href="./xref/com/google/common/io/ByteBufferDataInputStream.html#L220">220</a></td></tr>
-<tr class="b">
-<td><img src="images/icon_error_sml.gif" alt="" />&#160;Error</td>
-<td>coding</td>
-<td>MagicNumber</td>
-<td>'0xff' is a magic number.</td>
-<td><a href="./xref/com/google/common/io/ByteBufferDataInputStream.html#L244">244</a></td></tr>
-<tr class="a">
-<td><img src="images/icon_error_sml.gif" alt="" />&#160;Error</td>
-<td>coding</td>
-<td>MagicNumber</td>
-<td>'0xffff' is a magic number.</td>
-<td><a href="./xref/com/google/common/io/ByteBufferDataInputStream.html#L253">253</a></td></tr></table></div>
-<div class="section">
-<h3 id="com.google.common.io.ByteBufferDataOutputStream.java">com/google/common/io/ByteBufferDataOutputStream.java</h3>
-<table border="0" class="bodyTable">
-<tr class="b">
-<th>Severity</th>
-<th>Category</th>
-<th>Rule</th>
-<th>Message</th>
-<th>Line</th></tr>
-<tr class="a">
-<td><img src="images/icon_error_sml.gif" alt="" />&#160;Error</td>
-<td>coding</td>
-<td>HiddenField</td>
-<td>'buf' hides a field.</td>
-<td><a href="./xref/com/google/common/io/ByteBufferDataOutputStream.html#L50">50</a></td></tr>
-<tr class="b">
-<td><img src="images/icon_error_sml.gif" alt="" />&#160;Error</td>
-<td>coding</td>
-<td>AvoidInlineConditionals</td>
-<td>Avoid inline conditionals.</td>
-<td><a href="./xref/com/google/common/io/ByteBufferDataOutputStream.html#L133">133</a></td></tr></table></div></div>
+<td>'-2' is a magic number.</td>
+<td><a href="./xref/ch/ledcom/jpreseed/cli/JPreseed.html#L88">88</a></td></tr></table></div></div>
       </div>
     </div>
     <div class="clear">
