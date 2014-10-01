@@ -50,11 +50,13 @@ public class JPreseedController {
 
     private final DownloaderFactory downloaderFactory;
     private final DistroService distroService;
+    private final UsbCreator usbCreator;
 
     @Autowired(required = true)
-    public JPreseedController(DownloaderFactory downloaderFactory, DistroService distroService) {
+    public JPreseedController(DownloaderFactory downloaderFactory, DistroService distroService, UsbCreator usbCreator) {
         this.downloaderFactory = downloaderFactory;
         this.distroService = distroService;
+        this.usbCreator = usbCreator;
     }
 
     @ModelAttribute("distributions")
@@ -105,12 +107,12 @@ public class JPreseedController {
             response.setHeader(CONTENT_DISPOSITION, "attachment; filename=\"boot.img.gz\"");
 
             logger.debug("Creating USB image ...");
-            new UsbCreator(
+            usbCreator.create(
                     srcBootImgGz.getContent(),
                     targetBootImgGz,
                     wrap(syslinux.getBytes()),
                     preseedStore.getPreseeds()
-            ).create();
+            );
             logger.debug("USB image created.");
         }
     }

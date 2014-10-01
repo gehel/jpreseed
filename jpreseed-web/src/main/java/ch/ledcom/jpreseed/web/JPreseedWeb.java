@@ -15,6 +15,7 @@
  */
 package ch.ledcom.jpreseed.web;
 
+import ch.ledcom.jpreseed.UsbCreator;
 import ch.ledcom.jpreseed.distro.DistroService;
 import ch.ledcom.jpreseed.DownloaderFactory;
 import org.apache.http.client.config.RequestConfig;
@@ -67,6 +68,11 @@ public class JPreseedWeb {
         try (InputStream configuration = ctx.getResource("classpath:distributions.yaml").getInputStream()) {
             return DistroService.create(configuration);
         }
+    }
+
+    @Bean
+    public UsbCreator usbCreator() {
+        return new UsbCreator();
     }
 
     public static void main(String[] args) {

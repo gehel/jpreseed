@@ -40,21 +40,11 @@ public class JPreseed {
     private final Logger logger = LoggerFactory.getLogger(getClass());
 
     private final DownloaderFactory downloaderFactory;
+    private final UsbCreator usbCreator;
 
-    public JPreseed() {
-        CacheConfig cacheConfig = CacheConfig.custom()
-                .setMaxCacheEntries(MAX_CACHE_ENTRIES)
-                .setMaxObjectSize(MAX_OBJECT_SIZE)
-                .build();
-        RequestConfig requestConfig = RequestConfig.custom()
-                .setConnectTimeout(CONNECT_TIMEOUT)
-                .setSocketTimeout(SOCKET_TIMEOUT)
-                .build();
-
-        downloaderFactory = new DownloaderFactory(CachingHttpClients.custom()
-                .setCacheConfig(cacheConfig)
-                .setDefaultRequestConfig(requestConfig)
-                .build());
+    public JPreseed(DownloaderFactory downloaderFactory, UsbCreator usbCreator) {
+        this.downloaderFactory = downloaderFactory;
+        this.usbCreator = usbCreator;
     }
 
     public final void create(JPreseedArguments arguments) throws IOException {
@@ -62,12 +52,12 @@ public class JPreseed {
                 InputImage image = getSourceImage(arguments);
                 GZIPOutputStream newImage = new GZIPOutputStream(Files.newOutputStream(arguments.getTargetImage()))) {
             ByteBuffer sysConfigCfg = ByteBuffer.wrap(Files.readAllBytes(arguments.getSysConfigFile()));
-            new UsbCreator(
+            usbCreator.create(
                     image.getContent(),
                     newImage,
                     sysConfigCfg,
                     arguments.getPreseeds()
-            ).create();
+            );
         }
     }
 
@@ -89,7 +79,7 @@ public class JPreseed {
                 System.exit(0);
             }
             arguments.validate();
-            new JPreseed().create(arguments);
+            initialize().create(arguments);
         } catch (ParameterException pe) {
             System.err.println(pe.getMessage());
             System.exit(-1);
@@ -97,6 +87,23 @@ public class JPreseed {
             System.err.println(ex.getMessage());
             System.exit(-2);
         }
+    }
+
+    private static JPreseed initialize() {
+        CacheConfig cacheConfig = CacheConfig.custom()
+                .setMaxCacheEntries(MAX_CACHE_ENTRIES)
+                .setMaxObjectSize(MAX_OBJECT_SIZE)
+                .build();
+        RequestConfig requestConfig = RequestConfig.custom()
+                .setConnectTimeout(CONNECT_TIMEOUT)
+                .setSocketTimeout(SOCKET_TIMEOUT)
+                .build();
+
+        DownloaderFactory downloaderFactory = new DownloaderFactory(CachingHttpClients.custom()
+                .setCacheConfig(cacheConfig)
+                .setDefaultRequestConfig(requestConfig)
+                .build());
+        return new JPreseed(downloaderFactory, new UsbCreator());
     }
 
 }

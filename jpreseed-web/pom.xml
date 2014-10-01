@@ -33,7 +33,7 @@
     <properties>
         <verify.checkstyle.max.violations>4</verify.checkstyle.max.violations>
         <verify.coverage.threshold>93</verify.coverage.threshold>
-        <verify.mutation.threshold>35</verify.mutation.threshold>
+        <verify.mutation.threshold>34</verify.mutation.threshold>
     </properties>
 
     <dependencies>

@@ -52,8 +52,7 @@ public class UsbCreatorTest {
 
         try (InputStream srcBootImg = Files.newInputStream(VFAT_IMG_GZ);
              GZIPOutputStream newBootImg = new GZIPOutputStream(Files.newOutputStream(NEW_IMAGE))) {
-            UsbCreator usbCreator = new UsbCreator(srcBootImg, newBootImg, sysLinuxCfg, preseeds);
-            usbCreator.create();
+            new UsbCreator().create(srcBootImg, newBootImg, sysLinuxCfg, preseeds);
         }
 
         assertThat(NEW_IMAGE).exists();
