@@ -1,3 +1,4 @@
 ch.ledcom.jpreseed
-ch.ledcom.jpreseed.assertions
-ch.ledcom.jpreseed.utils
+ch.ledcom.jpreseed.cli
+ch.ledcom.jpreseed.distro
+ch.ledcom.jpreseed.web
