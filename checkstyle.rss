@@ -19,20 +19,20 @@ under the License.
 -->
 <rss version="0.91">
   <channel>
-    <title>JPreseed - Checkstyle report</title>
-    <link>http://gehel.github.com/jpreseed/</link>
-    <description>JPreseed - Checkstyle report</description>
+    <title>jpreseed-core - Checkstyle report</title>
+    <link>http://gehel.github.com/jpreseed/jpreseed-core/</link>
+    <description>jpreseed-core - Checkstyle report</description>
     <language>en-us</language>
     <copyright>&#169;2014 LedCom</copyright>
     <item>
-      <title>File: 29,
-             Errors: 32,
+      <title>File: 16,
+             Errors: 26,
              Warnings: 0,
              Infos: 0
       </title>
-            <link>http://gehel.github.com/jpreseed//checkstyle.html</link>
+            <link>http://gehel.github.com/jpreseed/jpreseed-core//checkstyle.html</link>
       <description>
-        <p>Click <a href="http://gehel.github.com/jpreseed//checkstyle.html">here</a> for the full Checkstyle report.</p>
+        <p>Click <a href="http://gehel.github.com/jpreseed/jpreseed-core//checkstyle.html">here</a> for the full Checkstyle report.</p>
 
         <table summary="Files" boder="1">
           <thead>
@@ -46,77 +46,7 @@ under the License.
           <tbody>
                           <tr>
                 <td>
-                  <a href="http://gehel.github.com/jpreseed//checkstyle.html#ch.ledcom.jpreseed.cli.args.NonExistingPathValidator.java">ch/ledcom/jpreseed/cli/args/NonExistingPathValidator.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://gehel.github.com/jpreseed//checkstyle.html#ch.ledcom.jpreseed.distro.DistroAndVersion.java">ch/ledcom/jpreseed/distro/DistroAndVersion.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  2
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://gehel.github.com/jpreseed//checkstyle.html#ch.ledcom.jpreseed.distro.Distribution.java">ch/ledcom/jpreseed/distro/Distribution.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  3
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://gehel.github.com/jpreseed//checkstyle.html#ch.ledcom.jpreseed.Downloader.java">ch/ledcom/jpreseed/Downloader.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  2
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://gehel.github.com/jpreseed//checkstyle.html#com.google.common.io.ByteBufferDataOutputStream.java">com/google/common/io/ByteBufferDataOutputStream.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  2
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://gehel.github.com/jpreseed//checkstyle.html#ch.ledcom.jpreseed.distro.DistroService.java">ch/ledcom/jpreseed/distro/DistroService.java</a>
+                  <a href="http://gehel.github.com/jpreseed/jpreseed-core//checkstyle.html#ch.ledcom.jpreseed.InitrdRepacker.java">ch/ledcom/jpreseed/InitrdRepacker.java</a>
                 </td>
                 <td>
                   0
@@ -130,77 +60,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://gehel.github.com/jpreseed//checkstyle.html#ch.ledcom.jpreseed.cli.args.PathConverter.java">ch/ledcom/jpreseed/cli/args/PathConverter.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://gehel.github.com/jpreseed//checkstyle.html#ch.ledcom.jpreseed.web.package-info.java">ch/ledcom/jpreseed/web/package-info.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://gehel.github.com/jpreseed//checkstyle.html#ch.ledcom.jpreseed.cli.args.JPreseedArguments.java">ch/ledcom/jpreseed/cli/args/JPreseedArguments.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://gehel.github.com/jpreseed//checkstyle.html#ch.ledcom.jpreseed.web.JPreseedController.java">ch/ledcom/jpreseed/web/JPreseedController.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  3
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://gehel.github.com/jpreseed//checkstyle.html#ch.ledcom.jpreseed.InitrdRepacker.java">ch/ledcom/jpreseed/InitrdRepacker.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  1
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://gehel.github.com/jpreseed//checkstyle.html#com.google.common.io.ByteBufferDataInputStream.java">com/google/common/io/ByteBufferDataInputStream.java</a>
+                  <a href="http://gehel.github.com/jpreseed/jpreseed-core//checkstyle.html#com.google.common.io.ByteBufferDataInputStream.java">com/google/common/io/ByteBufferDataInputStream.java</a>
                 </td>
                 <td>
                   0
@@ -214,7 +74,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://gehel.github.com/jpreseed//checkstyle.html#ch.ledcom.jpreseed.cli.args.ExistingPathValidator.java">ch/ledcom/jpreseed/cli/args/ExistingPathValidator.java</a>
+                  <a href="http://gehel.github.com/jpreseed/jpreseed-core//checkstyle.html#ch.ledcom.jpreseed.distro.DistroAndVersion.java">ch/ledcom/jpreseed/distro/DistroAndVersion.java</a>
                 </td>
                 <td>
                   0
@@ -223,12 +83,12 @@ under the License.
                   0
                 </td>
                 <td>
-                  0
+                  2
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="http://gehel.github.com/jpreseed//checkstyle.html#ch.ledcom.jpreseed.DownloadedInputImage.java">ch/ledcom/jpreseed/DownloadedInputImage.java</a>
+                  <a href="http://gehel.github.com/jpreseed/jpreseed-core//checkstyle.html#ch.ledcom.jpreseed.DownloadedInputImage.java">ch/ledcom/jpreseed/DownloadedInputImage.java</a>
                 </td>
                 <td>
                   0
@@ -242,7 +102,21 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://gehel.github.com/jpreseed//checkstyle.html#ch.ledcom.jpreseed.cli.JPreseed.java">ch/ledcom/jpreseed/cli/JPreseed.java</a>
+                  <a href="http://gehel.github.com/jpreseed/jpreseed-core//checkstyle.html#com.google.common.io.package-info.java">com/google/common/io/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://gehel.github.com/jpreseed/jpreseed-core//checkstyle.html#ch.ledcom.jpreseed.distro.Distribution.java">ch/ledcom/jpreseed/distro/Distribution.java</a>
                 </td>
                 <td>
                   0
@@ -256,7 +130,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://gehel.github.com/jpreseed//checkstyle.html#com.google.common.io.package-info.java">com/google/common/io/package-info.java</a>
+                  <a href="http://gehel.github.com/jpreseed/jpreseed-core//checkstyle.html#ch.ledcom.jpreseed.package-info.java">ch/ledcom/jpreseed/package-info.java</a>
                 </td>
                 <td>
                   0
@@ -270,63 +144,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://gehel.github.com/jpreseed//checkstyle.html#ch.ledcom.jpreseed.cli.package-info.java">ch/ledcom/jpreseed/cli/package-info.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://gehel.github.com/jpreseed//checkstyle.html#ch.ledcom.jpreseed.web.TemporaryPreseedStore.java">ch/ledcom/jpreseed/web/TemporaryPreseedStore.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://gehel.github.com/jpreseed//checkstyle.html#ch.ledcom.jpreseed.package-info.java">ch/ledcom/jpreseed/package-info.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://gehel.github.com/jpreseed//checkstyle.html#ch.ledcom.jpreseed.web.JPreseedWeb.java">ch/ledcom/jpreseed/web/JPreseedWeb.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://gehel.github.com/jpreseed//checkstyle.html#ch.ledcom.jpreseed.UsbCreator.java">ch/ledcom/jpreseed/UsbCreator.java</a>
+                  <a href="http://gehel.github.com/jpreseed/jpreseed-core//checkstyle.html#ch.ledcom.jpreseed.UsbCreator.java">ch/ledcom/jpreseed/UsbCreator.java</a>
                 </td>
                 <td>
                   0
@@ -340,7 +158,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://gehel.github.com/jpreseed//checkstyle.html#ch.ledcom.jpreseed.cli.args.package-info.java">ch/ledcom/jpreseed/cli/args/package-info.java</a>
+                  <a href="http://gehel.github.com/jpreseed/jpreseed-core//checkstyle.html#ch.ledcom.jpreseed.Downloader.java">ch/ledcom/jpreseed/Downloader.java</a>
                 </td>
                 <td>
                   0
@@ -349,12 +167,26 @@ under the License.
                   0
                 </td>
                 <td>
-                  0
+                  2
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="http://gehel.github.com/jpreseed//checkstyle.html#ch.ledcom.jpreseed.InputStreamImage.java">ch/ledcom/jpreseed/InputStreamImage.java</a>
+                  <a href="http://gehel.github.com/jpreseed/jpreseed-core//checkstyle.html#com.google.common.io.ByteBufferDataOutputStream.java">com/google/common/io/ByteBufferDataOutputStream.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://gehel.github.com/jpreseed/jpreseed-core//checkstyle.html#ch.ledcom.jpreseed.distro.DistroService.java">ch/ledcom/jpreseed/distro/DistroService.java</a>
                 </td>
                 <td>
                   0
@@ -368,7 +200,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://gehel.github.com/jpreseed//checkstyle.html#application.properties">application.properties</a>
+                  <a href="http://gehel.github.com/jpreseed/jpreseed-core//checkstyle.html#ch.ledcom.jpreseed.InputStreamImage.java">ch/ledcom/jpreseed/InputStreamImage.java</a>
                 </td>
                 <td>
                   0
@@ -377,12 +209,12 @@ under the License.
                   0
                 </td>
                 <td>
-                  0
+                  1
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="http://gehel.github.com/jpreseed//checkstyle.html#ch.ledcom.jpreseed.distro.DistroVersion.java">ch/ledcom/jpreseed/distro/DistroVersion.java</a>
+                  <a href="http://gehel.github.com/jpreseed/jpreseed-core//checkstyle.html#ch.ledcom.jpreseed.distro.DistroVersion.java">ch/ledcom/jpreseed/distro/DistroVersion.java</a>
                 </td>
                 <td>
                   0
@@ -396,7 +228,35 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://gehel.github.com/jpreseed//checkstyle.html#ch.ledcom.jpreseed.DownloaderFactory.java">ch/ledcom/jpreseed/DownloaderFactory.java</a>
+                  <a href="http://gehel.github.com/jpreseed/jpreseed-core//checkstyle.html#ch.ledcom.jpreseed.FatModifier.java">ch/ledcom/jpreseed/FatModifier.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://gehel.github.com/jpreseed/jpreseed-core//checkstyle.html#ch.ledcom.jpreseed.InputImage.java">ch/ledcom/jpreseed/InputImage.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://gehel.github.com/jpreseed/jpreseed-core//checkstyle.html#ch.ledcom.jpreseed.DownloaderFactory.java">ch/ledcom/jpreseed/DownloaderFactory.java</a>
                 </td>
                 <td>
                   0
@@ -406,48 +266,6 @@ under the License.
                 </td>
                 <td>
                   1
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://gehel.github.com/jpreseed//checkstyle.html#ch.ledcom.jpreseed.InputImage.java">ch/ledcom/jpreseed/InputImage.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://gehel.github.com/jpreseed//checkstyle.html#ch.ledcom.jpreseed.FatModifier.java">ch/ledcom/jpreseed/FatModifier.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://gehel.github.com/jpreseed//checkstyle.html#ch.ledcom.jpreseed.cli.args.URIConverter.java">ch/ledcom/jpreseed/cli/args/URIConverter.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
                 </td>
               </tr>
                       </tbody>

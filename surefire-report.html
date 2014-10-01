@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>JPreseed &#x2013; Surefire Report</title>
+    <title>jpreseed-core &#x2013; Surefire Report</title>
     <style type="text/css" media="all">
       @import url("./css/maven-base.css");
       @import url("./css/maven-theme.css");
@@ -17,7 +17,7 @@
   <body class="composite">
     <div id="banner">
                     <div id="bannerLeft">
-                JPreseed
+                jpreseed-core
                 </div>
                     <div class="clear">
         <hr/>
@@ -30,7 +30,7 @@
         <span id="publishDate">Last Published: 2014-10-01</span>
                   &nbsp;| <span id="projectVersion">Version: 1.0-SNAPSHOT</span>
                       </div>
-            <div class="xright">                    <a href="./" title="JPreseed">JPreseed</a>
+            <div class="xright">                    <a href="./" title="jpreseed-core">jpreseed-core</a>
               
                     
       </div>
@@ -42,24 +42,18 @@
       <div id="navcolumn">
              
                     
-                                          <h5>Modules</h5>
+                                <h5>Parent Project</h5>
                   <ul>
                   <li class="none">
-                          <a href="jpreseed-cli/index.html" title="Unnamed - ch.ledcom.jpreseed:jpreseed-cli:jar:1.0-SNAPSHOT">Unnamed - ch.ledcom.jpreseed:jpreseed-cli:jar:1.0-SNAPSHOT</a>
-            </li>
-                  <li class="none">
-                          <a href="jpreseed-core/index.html" title="Unnamed - ch.ledcom.jpreseed:jpreseed-core:jar:1.0-SNAPSHOT">Unnamed - ch.ledcom.jpreseed:jpreseed-core:jar:1.0-SNAPSHOT</a>
-            </li>
-                  <li class="none">
-                          <a href="jpreseed-web/index.html" title="Unnamed - ch.ledcom.jpreseed:jpreseed-web:war:1.0-SNAPSHOT">Unnamed - ch.ledcom.jpreseed:jpreseed-web:war:1.0-SNAPSHOT</a>
+                          <a href="../index.html" title="JPreseed">JPreseed</a>
             </li>
           </ul>
                        <h5>Project Documentation</h5>
                   <ul>
-                                                                                                                                                                                                                                                                                                                                                  <li class="collapsed">
+                                                                                                                                                                                                                                                                                                                                <li class="collapsed">
                           <a href="project-info.html" title="Project Information">Project Information</a>
                   </li>
-                                                                                                                                                                                                                                                                                                      <li class="expanded">
+                                                                                                                                                                                                                                                                                                                                                            <li class="expanded">
                           <a href="project-reports.html" title="Project Reports">Project Reports</a>
                     <ul>
                       <li class="none">
@@ -81,7 +75,16 @@
                           <a href="dev-activity.html" title="Developer Activity">Developer Activity</a>
             </li>
                       <li class="none">
-                          <a href="checkstyle-aggregate.html" title="Checkstyle">Checkstyle</a>
+                          <a href="checkstyle.html" title="Checkstyle">Checkstyle</a>
+            </li>
+                      <li class="none">
+                          <a href="findbugs.html" title="FindBugs">FindBugs</a>
+            </li>
+                      <li class="none">
+                          <a href="pmd.html" title="PMD">PMD</a>
+            </li>
+                      <li class="none">
+                          <a href="jdepend-report.html" title="JDepend">JDepend</a>
             </li>
                       <li class="none">
             <strong>Surefire Report</strong>
@@ -90,16 +93,16 @@
                           <a href="cobertura/index.html" title="Cobertura Test Coverage">Cobertura Test Coverage</a>
             </li>
                       <li class="none">
-                          <a href="apidocs/index.html" title="JavaDocs">JavaDocs</a>
-            </li>
-                      <li class="none">
                           <a href="testapidocs/index.html" title="Test JavaDocs">Test JavaDocs</a>
             </li>
                       <li class="none">
-                          <a href="xref/index.html" title="Source Xref">Source Xref</a>
+                          <a href="apidocs/index.html" title="JavaDocs">JavaDocs</a>
             </li>
                       <li class="none">
                           <a href="xref-test/index.html" title="Test Source Xref">Test Source Xref</a>
+            </li>
+                      <li class="none">
+                          <a href="xref/index.html" title="Source Xref">Source Xref</a>
             </li>
               </ul>
         </li>
@@ -133,7 +136,8 @@ function toggleDisplay(elementId) {
 <div class="section">
 <h2><a name="Surefire_Report"></a>Surefire Report</h2></div>
 <div class="section">
-<h2><a name="Summary"></a>Summary</h2><a name="Summary"></a><br />
+<h2><a name="Summary"></a>Summary</h2><a name="Summary"></a>
+<p>[<a href="#Summary">Summary</a>] [<a href="#Package_List">Package List</a>] [<a href="#Test_Cases">Test Cases</a>]</p><br />
 <table border="1" class="bodyTable">
 <tr class="a">
 <th>Tests</th>
@@ -143,13 +147,257 @@ function toggleDisplay(elementId) {
 <th>Success Rate</th>
 <th>Time</th></tr>
 <tr class="b">
+<td>23</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
-<td>0</td>
-<td>0%</td>
-<td>0</td></tr></table><br />
+<td>100%</td>
+<td>4.17</td></tr></table><br />
 <p>Note: failures are anticipated and checked for with assertions while errors are unanticipated.</p><br /></div>
+<div class="section">
+<h2><a name="Package_List"></a>Package List</h2><a name="Package_List"></a>
+<p>[<a href="#Summary">Summary</a>] [<a href="#Package_List">Package List</a>] [<a href="#Test_Cases">Test Cases</a>]</p><br />
+<table border="1" class="bodyTable">
+<tr class="a">
+<th>Package</th>
+<th>Tests</th>
+<th>Errors </th>
+<th>Failures</th>
+<th>Skipped</th>
+<th>Success Rate</th>
+<th>Time</th></tr>
+<tr class="b">
+<td><a href="#ch.ledcom.jpreseed">ch.ledcom.jpreseed</a></td>
+<td>16</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+<td>3.943</td></tr>
+<tr class="a">
+<td><a href="#ch.ledcom.jpreseed.distro">ch.ledcom.jpreseed.distro</a></td>
+<td>7</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+<td>0.227</td></tr></table><br />
+<p>Note: package statistics are not computed recursively, they only sum up all of its testsuites numbers.</p>
+<div class="section">
+<h3><a name="ch.ledcom.jpreseed"></a>ch.ledcom.jpreseed</h3><a name="ch.ledcom.jpreseed"></a>
+<table border="1" class="bodyTable">
+<tr class="a">
+<th></th>
+<th>Class</th>
+<th>Tests</th>
+<th>Errors </th>
+<th>Failures</th>
+<th>Skipped</th>
+<th>Success Rate</th>
+<th>Time</th></tr>
+<tr class="b">
+<td><a href="#ch.ledcom.jpreseedInputStreamImageTest"><img src="images/icon_success_sml.gif" alt="" /></a></td>
+<td><a href="#ch.ledcom.jpreseedInputStreamImageTest">InputStreamImageTest</a></td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+<td>0.269</td></tr>
+<tr class="a">
+<td><a href="#ch.ledcom.jpreseedFatModifierTest"><img src="images/icon_success_sml.gif" alt="" /></a></td>
+<td><a href="#ch.ledcom.jpreseedFatModifierTest">FatModifierTest</a></td>
+<td>6</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+<td>0.054</td></tr>
+<tr class="b">
+<td><a href="#ch.ledcom.jpreseedCachedDownloaderTest"><img src="images/icon_success_sml.gif" alt="" /></a></td>
+<td><a href="#ch.ledcom.jpreseedCachedDownloaderTest">CachedDownloaderTest</a></td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+<td>2.865</td></tr>
+<tr class="a">
+<td><a href="#ch.ledcom.jpreseedInitrdRepackerTest"><img src="images/icon_success_sml.gif" alt="" /></a></td>
+<td><a href="#ch.ledcom.jpreseedInitrdRepackerTest">InitrdRepackerTest</a></td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+<td>0.028</td></tr>
+<tr class="b">
+<td><a href="#ch.ledcom.jpreseedDownloadedInputImageTest"><img src="images/icon_success_sml.gif" alt="" /></a></td>
+<td><a href="#ch.ledcom.jpreseedDownloadedInputImageTest">DownloadedInputImageTest</a></td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+<td>0.068</td></tr>
+<tr class="a">
+<td><a href="#ch.ledcom.jpreseedUsbCreatorTest"><img src="images/icon_success_sml.gif" alt="" /></a></td>
+<td><a href="#ch.ledcom.jpreseedUsbCreatorTest">UsbCreatorTest</a></td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+<td>0.659</td></tr></table></div>
+<div class="section">
+<h3><a name="ch.ledcom.jpreseed.distro"></a>ch.ledcom.jpreseed.distro</h3><a name="ch.ledcom.jpreseed.distro"></a>
+<table border="1" class="bodyTable">
+<tr class="a">
+<th></th>
+<th>Class</th>
+<th>Tests</th>
+<th>Errors </th>
+<th>Failures</th>
+<th>Skipped</th>
+<th>Success Rate</th>
+<th>Time</th></tr>
+<tr class="b">
+<td><a href="#ch.ledcom.jpreseed.distroDistroServiceTest"><img src="images/icon_success_sml.gif" alt="" /></a></td>
+<td><a href="#ch.ledcom.jpreseed.distroDistroServiceTest">DistroServiceTest</a></td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+<td>0.217</td></tr>
+<tr class="a">
+<td><a href="#ch.ledcom.jpreseed.distroDistributionTest"><img src="images/icon_success_sml.gif" alt="" /></a></td>
+<td><a href="#ch.ledcom.jpreseed.distroDistributionTest">DistributionTest</a></td>
+<td>5</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>100%</td>
+<td>0.01</td></tr></table></div><br /></div>
+<div class="section">
+<h2><a name="Test_Cases"></a>Test Cases</h2><a name="Test_Cases"></a>
+<p>[<a href="#Summary">Summary</a>] [<a href="#Package_List">Package List</a>] [<a href="#Test_Cases">Test Cases</a>]</p>
+<div class="section">
+<h3><a name="InputStreamImageTest"></a>InputStreamImageTest</h3><a name="ch.ledcom.jpreseedInputStreamImageTest"></a>
+<table border="1" class="bodyTable">
+<tr class="a">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td>resourcesAreNotClosedWhenImageIsNotClosed</td>
+<td>0.263</td></tr>
+<tr class="b">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td>resourcesAreClosedWhenImageIsClosed</td>
+<td>0.006</td></tr></table></div>
+<div class="section">
+<h3><a name="FatModifierTest"></a>FatModifierTest</h3><a name="ch.ledcom.jpreseedFatModifierTest"></a>
+<table border="1" class="bodyTable">
+<tr class="a">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td>existingFileCanBeModified</td>
+<td>0.014</td></tr>
+<tr class="b">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td>cannotGetContentOfDirectory</td>
+<td>0.007</td></tr>
+<tr class="a">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td>newFileCanBeAdded</td>
+<td>0.013</td></tr>
+<tr class="b">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td>replacingDirectoryWithFileIsNotPossible</td>
+<td>0.007</td></tr>
+<tr class="a">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td>existingFileCanBeFound</td>
+<td>0.007</td></tr>
+<tr class="b">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td>nonExistingFileCannotBeFound</td>
+<td>0.006</td></tr></table></div>
+<div class="section">
+<h3><a name="CachedDownloaderTest"></a>CachedDownloaderTest</h3><a name="ch.ledcom.jpreseedCachedDownloaderTest"></a>
+<table border="1" class="bodyTable">
+<tr class="a">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td>downloadCreateFileOnDisk</td>
+<td>2.395</td></tr>
+<tr class="b">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td>secondDownloadGetsFileFromCache</td>
+<td>0.47</td></tr></table></div>
+<div class="section">
+<h3><a name="InitrdRepackerTest"></a>InitrdRepackerTest</h3><a name="ch.ledcom.jpreseedInitrdRepackerTest"></a>
+<table border="1" class="bodyTable">
+<tr class="a">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td>repackWithoutAdditionalFiles</td>
+<td>0.008</td></tr>
+<tr class="b">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td>addedFileIsPresentInArchive</td>
+<td>0.011</td></tr>
+<tr class="a">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td>addingExistingFileDoesNotCreateDuplicateEntries</td>
+<td>0.009</td></tr></table></div>
+<div class="section">
+<h3><a name="DistroServiceTest"></a>DistroServiceTest</h3><a name="ch.ledcom.jpreseed.distroDistroServiceTest"></a>
+<table border="1" class="bodyTable">
+<tr class="a">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td>loadingDistributionListFromYaml</td>
+<td>0.2</td></tr>
+<tr class="b">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td>flattenedDistributionsAreCorrect</td>
+<td>0.017</td></tr></table></div>
+<div class="section">
+<h3><a name="DistributionTest"></a>DistributionTest</h3><a name="ch.ledcom.jpreseed.distroDistributionTest"></a>
+<table border="1" class="bodyTable">
+<tr class="a">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td>gettingVersionByShortName</td>
+<td>0.001</td></tr>
+<tr class="b">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td>checkVersionList</td>
+<td>0.004</td></tr>
+<tr class="a">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td>gettingVersionByName</td>
+<td>0.002</td></tr>
+<tr class="b">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td>gettingVersionByNumber</td>
+<td>0.002</td></tr>
+<tr class="a">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td>gettingNonExistingVersion</td>
+<td>0.001</td></tr></table></div>
+<div class="section">
+<h3><a name="DownloadedInputImageTest"></a>DownloadedInputImageTest</h3><a name="ch.ledcom.jpreseedDownloadedInputImageTest"></a>
+<table border="1" class="bodyTable">
+<tr class="a">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td>resourcesAreNotClosedWhenImageIsNotClosed</td>
+<td>0.06</td></tr>
+<tr class="b">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td>resourcesAreClosedWhenImageIsClosed</td>
+<td>0.008</td></tr></table></div>
+<div class="section">
+<h3><a name="UsbCreatorTest"></a>UsbCreatorTest</h3><a name="ch.ledcom.jpreseedUsbCreatorTest"></a>
+<table border="1" class="bodyTable">
+<tr class="a">
+<td><img src="images/icon_success_sml.gif" alt="" /></td>
+<td>createUsb</td>
+<td>0.659</td></tr></table></div><br /></div>
       </div>
     </div>
     <div class="clear">
