@@ -19,20 +19,20 @@ under the License.
 -->
 <rss version="0.91">
   <channel>
-    <title>jpreseed-cli - Checkstyle report</title>
-    <link>http://gehel.github.com/jpreseed/jpreseed-cli/</link>
-    <description>jpreseed-cli - Checkstyle report</description>
+    <title>jpreseed-web - Checkstyle report</title>
+    <link>http://gehel.github.com/jpreseed/jpreseed-web/</link>
+    <description>jpreseed-web - Checkstyle report</description>
     <language>en-us</language>
     <copyright>&#169;2014 LedCom</copyright>
     <item>
-      <title>File: 8,
+      <title>File: 5,
              Errors: 3,
              Warnings: 0,
              Infos: 0
       </title>
-            <link>http://gehel.github.com/jpreseed/jpreseed-cli//checkstyle.html</link>
+            <link>http://gehel.github.com/jpreseed/jpreseed-web//checkstyle.html</link>
       <description>
-        <p>Click <a href="http://gehel.github.com/jpreseed/jpreseed-cli//checkstyle.html">here</a> for the full Checkstyle report.</p>
+        <p>Click <a href="http://gehel.github.com/jpreseed/jpreseed-web//checkstyle.html">here</a> for the full Checkstyle report.</p>
 
         <table summary="Files" boder="1">
           <thead>
@@ -46,7 +46,7 @@ under the License.
           <tbody>
                           <tr>
                 <td>
-                  <a href="http://gehel.github.com/jpreseed/jpreseed-cli//checkstyle.html#ch.ledcom.jpreseed.cli.args.JPreseedArguments.java">ch/ledcom/jpreseed/cli/args/JPreseedArguments.java</a>
+                  <a href="http://gehel.github.com/jpreseed/jpreseed-web//checkstyle.html#ch.ledcom.jpreseed.web.package-info.java">ch/ledcom/jpreseed/web/package-info.java</a>
                 </td>
                 <td>
                   0
@@ -60,49 +60,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://gehel.github.com/jpreseed/jpreseed-cli//checkstyle.html#ch.ledcom.jpreseed.cli.args.NonExistingPathValidator.java">ch/ledcom/jpreseed/cli/args/NonExistingPathValidator.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://gehel.github.com/jpreseed/jpreseed-cli//checkstyle.html#ch.ledcom.jpreseed.cli.args.ExistingPathValidator.java">ch/ledcom/jpreseed/cli/args/ExistingPathValidator.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://gehel.github.com/jpreseed/jpreseed-cli//checkstyle.html#ch.ledcom.jpreseed.cli.args.package-info.java">ch/ledcom/jpreseed/cli/args/package-info.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="http://gehel.github.com/jpreseed/jpreseed-cli//checkstyle.html#ch.ledcom.jpreseed.cli.JPreseed.java">ch/ledcom/jpreseed/cli/JPreseed.java</a>
+                  <a href="http://gehel.github.com/jpreseed/jpreseed-web//checkstyle.html#ch.ledcom.jpreseed.web.JPreseedController.java">ch/ledcom/jpreseed/web/JPreseedController.java</a>
                 </td>
                 <td>
                   0
@@ -116,7 +74,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://gehel.github.com/jpreseed/jpreseed-cli//checkstyle.html#ch.ledcom.jpreseed.cli.args.PathConverter.java">ch/ledcom/jpreseed/cli/args/PathConverter.java</a>
+                  <a href="http://gehel.github.com/jpreseed/jpreseed-web//checkstyle.html#ch.ledcom.jpreseed.web.TemporaryPreseedStore.java">ch/ledcom/jpreseed/web/TemporaryPreseedStore.java</a>
                 </td>
                 <td>
                   0
@@ -130,7 +88,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://gehel.github.com/jpreseed/jpreseed-cli//checkstyle.html#ch.ledcom.jpreseed.cli.args.URIConverter.java">ch/ledcom/jpreseed/cli/args/URIConverter.java</a>
+                  <a href="http://gehel.github.com/jpreseed/jpreseed-web//checkstyle.html#ch.ledcom.jpreseed.web.JPreseedWeb.java">ch/ledcom/jpreseed/web/JPreseedWeb.java</a>
                 </td>
                 <td>
                   0
@@ -144,7 +102,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="http://gehel.github.com/jpreseed/jpreseed-cli//checkstyle.html#ch.ledcom.jpreseed.cli.package-info.java">ch/ledcom/jpreseed/cli/package-info.java</a>
+                  <a href="http://gehel.github.com/jpreseed/jpreseed-web//checkstyle.html#application.properties">application.properties</a>
                 </td>
                 <td>
                   0
